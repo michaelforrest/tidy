@@ -1,0 +1,1 @@
+This allows projects to be generated using the LBi Useful libraries (and includes a branch of those libraries)
