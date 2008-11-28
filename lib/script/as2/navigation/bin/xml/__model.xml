@@ -1,0 +1,7 @@
+<<%=collection_name%>>
+	<!-- keep your ids meaningful - please don't leave this as section_1 - section_4 -->
+	<<%=instance_name%> id="section_1" title="Section 1"></<%=instance_name%>>
+	<<%=instance_name%> id="section_2" title="Section 2"></<%=instance_name%>>
+	<<%=instance_name%> id="section_3" title="Section 3"></<%=instance_name%>>
+	<<%=instance_name%> id="section_4" title="Section 4"></<%=instance_name%>>
+</<%=collection_name%>>
