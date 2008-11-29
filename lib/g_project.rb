@@ -3,11 +3,6 @@ class GProject
   LANGUAGE = 'as3'
   def initialize(options={:dir=>"."})
     @project_dir = options[:dir]
-    puts 'Run this in your project folder after sprouts -n as3 SomeProject (will automate and make this all simpler soon)'
-    puts "====================================================================="
-    puts `pwd`
-    puts File.expand_path(__FILE__)
-    puts "====================================================================="
     folder('script/lbi', 'script')
     folder("aslibs/#{LANGUAGE}/lbi", 'lib')
   end
