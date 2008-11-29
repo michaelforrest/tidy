@@ -1,3 +1,7 @@
-This allows projects to be generated using the LBi Useful libraries (and includes a branch of those libraries)
+All this does is copies my libraries into a Sprouts project folder.
 
-Well it might do at some point. It's my first gem - and I suspect I am overlapping a lot of stuff that has been done better by others.
+USAGE:
+
+sprout -n as3 SomeProject
+cd SomeProject
+g-project
