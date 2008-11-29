@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+#
+
+# following is straight out of the sprout bin
+require 'rubygems'
+
+require 'sprout'
+require 'sprout/generator'
+require 'optparse'
+
+OPTIONS = {
+  :project_name => nil,
+  :verbose =>true
+}
+
+def fail_with(opts, message)
+  puts "[ERROR] #{message}"
+  puts ""
+  puts opts
+  exit
+end
+
+parser = OptionParser.new do |options|
+  opts.banner = <<-BANNER
+    g-project is an open-source project generation tool based on sprout.
+    
+    Usage: #{File.basename($0)} [options] [ProjectName]
+  BANNER
+  
+  options.separator ""
+  
+  options.on("-v", "--verbose", "Show what it's doing") do
+    OPTIONS[:verbose] = true
+  end
+  
+  OPTIONS[:project_name] = ARGV.pop
+end
+
+puts ">> Creating new project"
+Sprout::Sprout.project_name = OPTIONS[:project_name]
+
+Sprout::Sprout.generate('as3', 'project', [OPTIONS[:project_name]])
