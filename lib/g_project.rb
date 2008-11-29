@@ -5,6 +5,7 @@ class GProject
     @project_dir = options[:dir]
     folder('script/lbi', 'script')
     folder("aslibs/#{LANGUAGE}/lbi", 'lib')
+    Dir.chdir(@project_dir){ `./script/lbi/generate project` }
   end
   def folder(source,dest)
     puts "adding library to this project's #{dest} folder"
