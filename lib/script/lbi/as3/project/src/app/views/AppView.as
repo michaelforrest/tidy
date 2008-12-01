@@ -20,7 +20,7 @@ package app.views {
 		private function initFlashVars(event : Event) : void {
 			FlashVars.init(stage);
 		}
-		public function respondToReady(e : Event) : void {
+		public function onReady(e : Event) : void {
 		}
 	}
 }
