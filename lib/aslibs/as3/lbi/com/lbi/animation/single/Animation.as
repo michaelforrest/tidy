@@ -38,8 +38,10 @@ package com.lbi.animation.single {
 
 		protected var is_complete:Boolean = true;
 	
-		private var __complete_event : Event;		private var engine : Engine;
-		public function get complete_event():Event{
+		private var __complete_event : Event;
+		private var engine : Engine;
+
+		public function get complete_event():Event{
 			return __complete_event;
 		}
 		public function set complete_event(v:Event):void{

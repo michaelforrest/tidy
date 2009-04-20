@@ -2,47 +2,47 @@ package com.lbi.animation.single {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	
-	import com.lbi.animation.util.IAnimation;	
+
+	import com.lbi.animation.util.IAnimation;
 
 	[Event("complete")]
 	/**
 	 	LBi Useful ActionScript 3 Library
 	    Copyright (C) 2007 LBi / Michael Forrest
-	
+
 	    This library is free software; you can redistribute it and/or
 	    modify it under the terms of the GNU Lesser General Public
 	    License as published by the Free Software Foundation; either
 	    version 2.1 of the License, or (at your option) any later version.
-	
+
 	    This library is distributed in the hope that it will be useful,
 	    but WITHOUT ANY WARRANTY; without even the implied warranty of
 	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 	    Lesser General Public License for more details.
-	
+
 	    You should have received a copy of the GNU Lesser General Public
 	    License along with this library; if not, write to the Free Software
-	    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+	    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 	*/
 	public class MethodWithCompleteEvent extends EventDispatcher implements IAnimation {
 		private var object : IEventDispatcher;
 		private var method:Function;
 		protected var complete:Boolean = false;
-	
+
 		private var complete_event : String;
-	
-		private var arguments : Array;
-	
-		public function MethodWithCompleteEvent($object : IEventDispatcher = null, $method : Function = null, $complete_event : String = null, ...$args){
+
+		private var __arguments : Array;
+
+		public function MethodWithCompleteEvent($object : IEventDispatcher = null, $method : Function = null, $complete_event : String = null, $args: Array = null){
 			complete_event = $complete_event;
 			object = $object;
 			method = $method;
-			arguments = $args;
+			__arguments = $args;
 		}
 		public function go() : void {
-			object.addEventListener(complete_event, onComplete);
+			if(complete_event) object.addEventListener(complete_event, onComplete);
 			complete = false;
-			if(method!=null) method.apply(object,arguments);
+			if(method != null) method.apply(object,__arguments);
 			if(!complete_event) onComplete(null);
 		}
 		protected function onComplete(e:Event) : void {
@@ -52,14 +52,14 @@ package com.lbi.animation.single {
 		public function destroy() : void {
 			delete this;
 		}
-	
+
 		public function stop(dispatchComplete : Boolean = false) : void {
 			//my_object.stop();
 			if(dispatchComplete) onComplete(null);
 		}
-	
+
 		public function isComplete():Boolean{
-				return complete;
+			return complete;
 		}
 		public function setFrames(frames : Number) : void {
 		}
@@ -69,7 +69,7 @@ package com.lbi.animation.single {
 		public function getStructure() : String {
 			return toString();
 		}
-	
+
 	}
-	
-}	
+
+}

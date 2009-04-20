@@ -14,11 +14,12 @@ package app.views {
 
 		public function AppView() {
 			addEventListener(Event.ADDED, initFlashVars);
-			app = App.getInstance();
-			app.registerEvents(this, [App.READY]);
 		}
 		private function initFlashVars(event : Event) : void {
 			FlashVars.init(stage);
+			app = App.getInstance();
+			app.registerEvents(this, [App.READY]);
+
 		}
 		public function onReady(e : Event) : void {
 		}

@@ -1,4 +1,5 @@
-package com.lbi.debug {	import com.lbi.debug.LogItemType;
+package com.lbi.debug {
+	import com.lbi.debug.LogItemType;
 	/**
 	 * @author chrgio
 	 */

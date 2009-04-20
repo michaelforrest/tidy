@@ -16,6 +16,6 @@ class app.views.AppView extends ViewBase {
 		app = App.getInstance();
 		app.registerEvents(this, [App.READY], "AppView");
 	}
-	private function respondToReady () : Void {
+	private function onReady () : Void {
 	}
 }

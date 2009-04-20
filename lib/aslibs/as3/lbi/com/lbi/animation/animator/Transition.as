@@ -1,5 +1,12 @@
 package com.lbi.animation.animator {
-	import flash.events.Event;	import flash.events.EventDispatcher;	import flash.utils.getQualifiedClassName;	import flash.utils.getTimer;	import com.lbi.animation.single.Animation;	import com.lbi.animation.util.Easing;	import com.lbi.debug.Log;
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	import flash.utils.getQualifiedClassName;
+	import flash.utils.getTimer;
+
+	import com.lbi.animation.single.Animation;
+	import com.lbi.animation.util.Easing;
+	import com.lbi.debug.Log;
 	/**
 	LBi Useful ActionScript 3 Library
 	    Copyright (C) 2007 LBi / Michael Forrest
@@ -24,6 +31,7 @@ package com.lbi.animation.animator {
 		private function dispatchComplete(e:Event):void {dispatchEvent(new Event(COMPLETE));}
 
 		public static var DEFAULT_FRAMES : Number = 10;
+		public static var DEFAULT_EASING : Function = Easing.easeOutCubic;
 
 		// These are the properties that you can change:
 		public var frames : Number = DEFAULT_FRAMES;
@@ -41,16 +49,19 @@ package com.lbi.animation.animator {
 
 		public function Transition($object: Object, $property : String) {
 			id = getTimer().toString();
-			easing = Easing.easeOutCubic;
+			easing = DEFAULT_EASING;
 			object = $object;
 			property = $property;
 			cache = object[property];
 			if(isNaN(cache)) Log.warn("Please set a default value for " + getQualifiedClassName($object) + "." + $property);
 		}
-		override public function addEventListener(type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {
+
+		override public function addEventListener(type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {
 			removeEventListener(type, listener); // make sure it can only be done once. I think..
-			super.addEventListener(type, listener, useCapture, priority, useWeakReference);		}
-		public function trigger($target : Number) : void {
+			super.addEventListener(type, listener, useCapture, priority, useWeakReference);
+		}
+
+		public function trigger($target : Number) : void {
 			interrupt();
 			start = getCurrentValue();
 			end = $target;
@@ -109,5 +120,6 @@ package com.lbi.animation.animator {
 		}
 		override public function toString() : String{
 			return "[Transition "+ id + "]";
-		}	}
+		}
+	}
 }

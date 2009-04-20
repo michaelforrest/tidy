@@ -1,6 +1,11 @@
 package com.lbi.animation.group {
-	import flash.events.Event;	import flash.events.IEventDispatcher;		import com.lbi.animation.util.GroupCommon;	import com.lbi.animation.util.IAnimation;	
-	[Event("complete")]
+	import flash.events.Event;
+	import flash.events.IEventDispatcher;
+	
+	import com.lbi.animation.util.GroupCommon;
+	import com.lbi.animation.util.IAnimation;	
+
+	[Event("complete")]
 	/**
 		LBi Useful ActionScript 3 Library
 	    Copyright (C) 2007 LBi / Michael Forrest

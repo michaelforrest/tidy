@@ -1,5 +1,9 @@
 package com.lbi.animation.single {
-	import flash.display.DisplayObject;		import com.lbi.animation.single.Animation;	import com.lbi.animation.util.Easing;		/**
+	import flash.display.DisplayObject;
+	
+	import com.lbi.animation.single.Animation;
+	import com.lbi.animation.util.Easing;	
+	/**
 	 	LBi Useful ActionScript 3 Library
 	    Copyright (C) 2007 LBi / Michael Forrest
 	

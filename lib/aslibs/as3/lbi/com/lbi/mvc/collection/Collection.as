@@ -1,23 +1,28 @@
 package com.lbi.mvc.collection {
 	use namespace AS3;
-	import flash.events.Event;		import com.lbi.mvc.model.EventMapper;		public dynamic class Collection extends Array {
+	import com.lbi.mvc.model.IEventMapper;
+
+	import flash.events.Event;
+
+	import com.lbi.mvc.model.EventMapper;
+	public dynamic class Collection extends Array implements IEventMapper{
 		public static var CHANGED : String = "changed";
 		private function dispatchChanged():void {event_mapper.dispatchEvent(new Event(CHANGED));}
-	
+
 		public static var INCREASED : String = "increased";
 		private function dispatchIncreased():void {event_mapper.dispatchEvent(new Event(INCREASED));}
-	
+
 		public static var DECREASED : String = "decreased";
 		private function dispatchDecreased():void {event_mapper.dispatchEvent(new Event(DECREASED));}
-	
+
 		public static var CHANGED_SIZE : String = "changed_size";
 		private function dispatchChangedSize():void {event_mapper.dispatchEvent(new Event(CHANGED_SIZE));}
-	
+
 		public var event_mapper : EventMapper;
-	
+
 		private var __index:Number;
 		private var __previous_index:Number = 0;
-		
+
 		private function get _index():Number{
 			return __index;
 		}
@@ -26,7 +31,7 @@ package com.lbi.mvc.collection {
 			__index = v;
 			_current = this[__index];
 		}
-	
+
 		private var __current:Object;
 		private function get _current():Object{
 			return __current;
@@ -35,9 +40,9 @@ package com.lbi.mvc.collection {
 			__current = v;
 			__current.select();
 		}
-	
+
 		public var loop : Boolean;
-	
+
 		private var __id__ : Number;
 		private static var __next_id__ : Number = 0;
 		function Collection(...$init_items){//$array: Array,$loop:Boolean) {
@@ -51,7 +56,7 @@ package com.lbi.mvc.collection {
 				for (var i : Number = 0; i < $init_items[0].length; i++) {
 					var item:Object = $init_items[0][i];
 					push(item);
-				}	
+				}
 			}
 		}
 		/**
@@ -93,7 +98,7 @@ package com.lbi.mvc.collection {
 			}
 			dispatchChanged();
 		}
-	
+
 		public function hasPrev() : Boolean {
 			return _index > 0;
 		}
@@ -130,7 +135,17 @@ package com.lbi.mvc.collection {
 			}
 			dispatchChanged();
 		}
-		/**
+		/*
+		 * Sets selection to nul
+		 */
+		public function deselect():void{
+			if(current()) ISelectable(current()).deselect();
+			__index = NaN;
+			__current = null;
+			//dispatchChanged();
+		}
+
+		/**
 		 * Removes an item from the collection
 		 */
 		public function remove($item:Object) : Object{
@@ -160,7 +175,7 @@ package com.lbi.mvc.collection {
 		public function first() : Object{
 			return this[0];
 		}
-	
+
 		public function getCurrentIndex() :Number{
 			return _index;
 		}
@@ -179,20 +194,24 @@ package com.lbi.mvc.collection {
 			return "[Collection id:" + __id__ +" "+super.toString()+"]";
 		}
 
-		public function registerEvents(view : Object, events : Array) : void {}
+		public function registerEvents(view : Object, events : Array) : void {
+			event_mapper.registerEvents(view, events);
+		}
+
 		public function getPossibleEvents() : Array {
-			return null;
+			return event_mapper.getPossibleEvents();
 		}
+
 		public function eventIsPossible(event_name : String) : Boolean {
-			return false;
+			return event_mapper.eventIsPossible(event_name);
 		}
-	
+
 		public function findByProperty($property : String, value : Object) : Object {
 			for (var i : Number = 0; i < this.length; i++) {
 				var item:Object = this[i];
 				if(item[$property]==value) return item;
 			}
-			return null;		
+			return null;
 		}
 		public function append(collection:Collection) : void{
 			for (var i : Number = 0; i < collection.length; i++) {
@@ -200,16 +219,16 @@ package com.lbi.mvc.collection {
 				push(item);
 			}
 		}
-		
+
 		public function push(value:Object):Number{
 			var result : Number = super.push(value);
 			dispatchChangedSize();
-			return result;	
+			return result;
 		}
 		public function add(value:Object) : Number{
 			var result : Number = super.push(value);
 			dispatchChangedSize();
-			return result;	
+			return result;
 		}
 
 		public function getPreviousIndex() : Number {
@@ -217,6 +236,26 @@ package com.lbi.mvc.collection {
 		}
 		public function clone() : Collection{
 			return new Collection(this);
+		}
+
+		public function dispatchEvent(event : Event) : Boolean {
+			return event_mapper.dispatchEvent(event)
+		}
+
+		public function hasEventListener(type : String) : Boolean {
+			return event_mapper.hasEventListener(type);
+		}
+
+		public function willTrigger(type : String) : Boolean {
+			return event_mapper.willTrigger(type);
+		}
+
+		public function removeEventListener(type : String, listener : Function, useCapture : Boolean = false) : void {
+			event_mapper.removeEventListener(type, listener);
+		}
+
+		public function addEventListener(type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {
+			event_mapper.addEventListener(type, listener);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package com.lbi.animation.util {
 	import flash.events.IEventDispatcher;
-	/**
+
+	/**
 	LBi Useful ActionScript 3 Library
 	    Copyright (C) 2007 LBi / Michael Forrest
 
