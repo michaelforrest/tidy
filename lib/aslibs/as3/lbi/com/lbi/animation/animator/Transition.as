@@ -28,7 +28,10 @@ package com.lbi.animation.animator {
 	 */
 	public class Transition extends EventDispatcher {
 		public static var COMPLETE : String = "complete";
-		private function dispatchComplete(e:Event):void {dispatchEvent(new Event(COMPLETE));}
+		private function dispatchComplete(e:Event):void {
+			animation = null;
+			dispatchEvent(new Event(COMPLETE));
+		}
 
 		public static var DEFAULT_FRAMES : Number = 10;
 		public static var DEFAULT_EASING : Function = Easing.easeOutCubic;
@@ -45,6 +48,8 @@ package com.lbi.animation.animator {
 
 		private var start : Number;
 		private var id : String;
+		private var threshold : Number = -1;
+		private static const THRESHOLD_CROSSED : String = "threshold_crossed";
 		private var end : Number;
 
 		public function Transition($object: Object, $property : String) {
@@ -79,18 +84,21 @@ package com.lbi.animation.animator {
 		}
 
 		private function animate(next:Number, prev:Number) : void {
-			if(getCurrentValue()!=cache){// && !(cache is null)) {
+			if(getCurrentValue()!=cache){
 				interrupt();
 			}else{
-				//Log.debug("setting " + object + "." + property + " to " + interpolate(easing(next)));
-				try{
-					object[property] = interpolate(easing(next));
+				try {
+					var v : Number = interpolate(easing(next));
+					object[property] = v;
+					if(threshold > -1 && v >= threshold){
+						threshold = -1;
+						dispatchEvent(new Event(THRESHOLD_CROSSED));
+					}
 				}catch(e:Error){
 					Log.error("Error in animate" +  e.toString());
 				}
 			}
 			cache = getCurrentValue();
-//			Log.debug("animated " + this + " to " + cache);
 		}
 
 		public function getProperty() : String {
@@ -121,5 +129,11 @@ package com.lbi.animation.animator {
 		override public function toString() : String{
 			return "[Transition "+ id + "]";
 		}
+
+		public function listenForThreshold(threshold : Number, callback : Function) : void {
+			this.threshold = threshold;
+			addEventListener(THRESHOLD_CROSSED, callback);
+		}		public function isInProgress() : Boolean {
+			return !(animation == null);		}
 	}
 }

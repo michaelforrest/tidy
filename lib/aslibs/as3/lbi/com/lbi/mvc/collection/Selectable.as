@@ -8,7 +8,7 @@ package com.lbi.mvc.collection {
 		protected function dispatchSelected():void {dispatchEvent(new Event(SELECTED));}
 		public static const DESELECTED : String = "deselected";
 
-		private function dispatchDeselected():void {dispatchEvent( new Event(DESELECTED));}
+		protected function dispatchDeselected():void {dispatchEvent( new Event(DESELECTED));}
 
 		protected var __selected__ : Boolean = false;
 

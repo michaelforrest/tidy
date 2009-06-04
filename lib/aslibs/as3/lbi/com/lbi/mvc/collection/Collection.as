@@ -1,10 +1,9 @@
 package com.lbi.mvc.collection {
 	use namespace AS3;
+	import com.lbi.mvc.model.EventMapper;
 	import com.lbi.mvc.model.IEventMapper;
 
 	import flash.events.Event;
-
-	import com.lbi.mvc.model.EventMapper;
 	public dynamic class Collection extends Array implements IEventMapper{
 		public static var CHANGED : String = "changed";
 		private function dispatchChanged():void {event_mapper.dispatchEvent(new Event(CHANGED));}
@@ -130,13 +129,12 @@ package com.lbi.mvc.collection {
 				var item : Object = this[i];
 				if(item === $item) {
 					_index = i; // selects the current item
-					//return i; wouldn't deselect items with a higher index!
 				}
 			}
 			dispatchChanged();
 		}
 		/*
-		 * Sets selection to nul
+		 * Sets selection to null
 		 */
 		public function deselect():void{
 			if(current()) ISelectable(current()).deselect();
@@ -198,14 +196,6 @@ package com.lbi.mvc.collection {
 			event_mapper.registerEvents(view, events);
 		}
 
-		public function getPossibleEvents() : Array {
-			return event_mapper.getPossibleEvents();
-		}
-
-		public function eventIsPossible(event_name : String) : Boolean {
-			return event_mapper.eventIsPossible(event_name);
-		}
-
 		public function findByProperty($property : String, value : Object) : Object {
 			for (var i : Number = 0; i < this.length; i++) {
 				var item:Object = this[i];
@@ -256,6 +246,8 @@ package com.lbi.mvc.collection {
 
 		public function addEventListener(type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {
 			event_mapper.addEventListener(type, listener);
+		}		public function registerAllEvents(view : Object) : void {
+			event_mapper.registerAllEvents(view);
 		}
 	}
 }

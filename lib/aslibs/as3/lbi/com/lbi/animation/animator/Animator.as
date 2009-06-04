@@ -63,9 +63,17 @@ package com.lbi.animation.animator {
 		private function getTransitionByProperty($property : String) : Transition {
 			return transitions.findByProperty("property", $property) as Transition || registerTransition($property);
 		}
-
-		public function listen($property:String,$callback:Function):void{
-			change($property).addEventListener(Transition.COMPLETE, $callback);
+		public function isAnimating(property : String) : Boolean{
+			var t : Transition=  getTransitionByProperty(property);
+			if(!t) return false;
+			return t.isInProgress();
+		}
+		public function listen(property:String, callback:Function, threshold : Number = 1):void{
+			if(threshold == 1){
+				change(property).addEventListener(Transition.COMPLETE, callback);
+			}else{
+				change(property).listenForThreshold(threshold, callback);
+			}
 		}
 	}
 }

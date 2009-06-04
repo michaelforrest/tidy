@@ -4,3 +4,4 @@ Manifest
 .DS_Store
 .svn
 tmp
+.project

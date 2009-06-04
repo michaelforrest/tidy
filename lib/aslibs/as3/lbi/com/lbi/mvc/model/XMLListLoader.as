@@ -53,6 +53,7 @@ import flash.utils.getQualifiedClassName;	/**
 			trace("failed to load " + url);
 		}
 		private function onProgress(event : ProgressEvent) : void {
+			dispatchEvent(event);
 		}
 
 		private function onLoad(event : Event = null) : void {
@@ -87,6 +88,10 @@ import flash.utils.getQualifiedClassName;	/**
 				events.dispatchEvent(new Event(Event.COMPLETE));
 			};
 			xmlListLoader.addEventListener(READY, callback);
+			var progressCallback : Function = function(e:ProgressEvent) : void{
+				events.dispatchEvent(e);
+			}
+			xmlListLoader.addEventListener(ProgressEvent.PROGRESS, progressCallback);
 			return events;
 		}
 	}

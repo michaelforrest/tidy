@@ -4,7 +4,7 @@ package com.lbi.mvc.model {
 	/**
 	 * @author michaelforrest
 	 */
-	public class EventMapper extends EventDispatcher {
+	public class EventMapper  extends EventDispatcher implements IEventMapper{
 		/**
 		 * Use registerEvents to automatically wire up controller events to which this view must respond.
 		 * So, if you do registerEvents(["complete","ready","pressed"]); you would then need to implement methods
@@ -44,16 +44,20 @@ package com.lbi.mvc.model {
 		 * Override this method to return an array of strings that can be registered as events.
 		 * This is useful if you want to dynamically generate event names (e.g. with keyboard controllers)
 		 */
-		public function getPossibleEvents():Array{
+		private function getPossibleEvents():Array{
 			return null;
 		}
-		public function eventIsPossible(event_name : String) : Boolean {
+		private function eventIsPossible(event_name : String) : Boolean {
 			var possible_events:Array = getPossibleEvents();
 			for (var i : Number = 0; i < possible_events.length; i++) {
 				var e:String = possible_events[i];
 				if (e==event_name) return true;
 			}
 			return false;
+		}
+
+		// TODO: make this work!
+		public function registerAllEvents(view : Object) : void {
 		}
 
 //		public static function initialize(object : IEventMapper) : void {

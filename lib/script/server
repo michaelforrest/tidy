@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+./script/server.rb &
+./script/bwlimit.rb --lhost localhost --lport 2001 -i 99 -o 99 localhost 2000 &
+open http://localhost:2001
