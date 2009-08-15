@@ -152,4 +152,16 @@ tmp/TestProject/script/script/as2/project/src/app/views/AppView.as
 tmp/TestProject/script/script/as3/project/project.rb
 tmp/TestProject/script/script/as3/project/src/app/helpers/Colours.as
 tmp/TestProject/script/script/as3/project/src/app/helpers/Typography.as
-tmp/TestProject/scri
+tmp/TestProject/script/script/as3/project/src/app/models/App.as
+tmp/TestProject/script/script/as3/project/src/app/models/FlashVars.as
+tmp/TestProject/script/script/as3/project/src/app/views/AppView.as
+tmp/TestProject/script/script/as3/scaffold/bin/xml/__model.xml
+tmp/TestProject/script/script/as3/scaffold/scaffold.rb
+tmp/TestProject/script/script/as3/scaffold/src/models/__Model.as
+tmp/TestProject/script/script/as3/scaffold/src/views/__model/__ModelDetailView.as
+tmp/TestProject/script/script/as3/scaffold/src/views/__model/__ModelListItemView.as
+tmp/TestProject/script/script/as3/scaffold/src/views/__model/__ModelListView.as
+tmp/TestProject/script/script/bwlimit.rb
+tmp/TestProject/script/script/generate
+tmp/TestProject/script/script/server
+tmp/TestProject/script/script/server.rb
