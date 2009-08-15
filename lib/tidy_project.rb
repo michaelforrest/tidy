@@ -16,8 +16,8 @@ class TidyProject
     dest = "#{@project_dir}/#{dest}/"
     source = "#{File.dirname(File.expand_path(__FILE__))}/#{source}"
     puts "adding '#{source}' to this project's '#{dest}' folder"
-    puts FileUtils.mkdir_p(dest)
-    puts FileUtils.cp_r(source, dest)
+    FileUtils.mkdir_p(dest)
+    FileUtils.cp_r(source, dest)
   end
    
 end
