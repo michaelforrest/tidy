@@ -2,8 +2,8 @@ require 'fileutils'
 class TidyProject
   
   LANGUAGE = 'as3'
-  def initialize(options={:dir=>"."})
-    @project_dir = options[:dir]
+  def initialize(project_name)
+    @project_dir = project_name
     folder('script', 'script')
     folder("aslibs/#{LANGUAGE}/lbi", 'lib')
     Dir.chdir(@project_dir){ `./script/generate project` }
