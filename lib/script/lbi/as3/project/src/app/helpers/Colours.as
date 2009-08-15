@@ -1,1 +1,0 @@
-package app.helpers{	/**	 * <%= credit%>	 * Declare all colour values to be used in the application here.	 */	public class Colours {		public static var GREY : Number = 0xCCCCCC;	}}
