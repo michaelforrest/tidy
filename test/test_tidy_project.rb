@@ -2,16 +2,19 @@ require "test/unit"
 require 'lib/tidy_project'
 require 'ftools'
 class TestTidyProject < Test::Unit::TestCase
-  PROJECT_FOLDER = 'tmp/TestProject'
+  PROJECT_NAME = 'tmp/TestProject'
   def setup
    # jump_into(PROJECT_FOLDER)
    
   end
   def test_add_libs
-    TidyProject.new(PROJECT_FOLDER)
-    Dir.chdir PROJECT_FOLDER do
-      assert File.exists?('script'), "No script folder"
-      assert File.exists?('rakefile'), "No rakefile"
+    Dir.chdir "tmp" do
+      puts `rm -fr #{PROJECT_NAME}`
+      TidyProject.new(PROJECT_NAME)
+      Dir.chdir PROJECT_NAME do
+        assert File.exists?('script'), "No script folder"
+        assert File.exists?('rakefile.rb'), "No rakefile"
+      end
     end
   end
   #def jump_into(dir)
