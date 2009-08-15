@@ -62,7 +62,12 @@ lib/script/as2/project/src/app/models/App.as
 lib/script/as2/project/src/app/models/FlashVars.as
 lib/script/as2/project/src/app/models/Linkages.as
 lib/script/as2/project/src/app/views/AppView.as
+lib/script/as3/project/lib/tasks/assets.rb
+lib/script/as3/project/lib/tasks/compile.rb
+lib/script/as3/project/lib/tasks/demo_config.rb
+lib/script/as3/project/lib/tasks/templates/demo_config.erb
 lib/script/as3/project/project.rb
+lib/script/as3/project/rakefile.rb
 lib/script/as3/project/src/app/helpers/Colours.as
 lib/script/as3/project/src/app/helpers/Typography.as
 lib/script/as3/project/src/app/models/App.as
@@ -83,4 +88,3 @@ Manifest
 Rakefile
 README
 test/test_tidy_project.rb
-tidy.gemspec
