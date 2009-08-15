@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+#
+require 'rubygems'
+require 'optparse'
+require File.dirname(__FILE__) + '/../lib/tidy_project'
+
+def fail_with(opts, message)
+  puts "[ERROR] #{message}"
+  puts ""
+  puts opts
+  exit
+end
+
+parser = OptionParser.new do |options|
+  options.banner = <<-BANNER
+    Tidy is an ActionScript framework for people who love Ruby
+    
+    Usage: #{File.basename($0)}
+    - adds necessary stuff to project
+  BANNER
+  
+  options.separator ""
+  
+#  options.on("-v", "--verbose", "Show what it's doing") do
+#    OPTIONS[:verbose] = true
+#  end
+  
+  
+end
+
+puts ">> adding stuff to project"
+fail_with ARGV, "Please specify a project name!" if ARGV.length < 1
+TidyProject.new(ARGV[0])

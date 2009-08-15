@@ -2,6 +2,4 @@ All this does is copies my libraries into a Sprouts project folder.
 
 USAGE:
 
-sprout -n as3 SomeProject
-cd SomeProject
-g-project
+tidyproject SomeProject

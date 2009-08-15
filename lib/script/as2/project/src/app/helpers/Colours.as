@@ -1,0 +1,1 @@
+/** * <%= credit%> * Declare all colour values to be used in the application here. */class app.helpers.Colours {	public static var GREY : Number = 0xCCCCCC;}

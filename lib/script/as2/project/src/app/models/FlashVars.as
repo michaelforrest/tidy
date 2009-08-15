@@ -1,0 +1,1 @@
+/** * <%= credit %> * Place any configurable variables in here where they can * be overridden during the embed process where necessary * This gives your clients maximum flexibility during deployment */class app.models.FlashVars {}
