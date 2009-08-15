@@ -17,7 +17,7 @@ package com.lbi.debug {
 			super();
 			if(!stage) throw new Error("Sorry - you need to initialise KeySequenceTrigger in your app so that it can listen to the stage. Do this in AppView after it has been instantiated");
 			trigger = $trigger;
-			stage.addEventListener(KeyboardEvent.KEY_UP,onKeyUp);
+			stage.addEventListener(KeyboardEvent.KEY_UP,onKeyUp,false,0,true);
 
 		}
 
@@ -53,7 +53,7 @@ package com.lbi.debug {
 		public static function makeTriggers(triggers : Array) : void {
 			for (var i : Number = 0; i < triggers.length; i++) {
 				var trigger:Object = triggers[i];
-				new KeySequenceTrigger(trigger.trigger).addEventListener(TRIGGERED, trigger.action);
+				new KeySequenceTrigger(trigger.trigger).addEventListener(TRIGGERED, trigger.action,false,0,true);
 			}
 		}
 	}

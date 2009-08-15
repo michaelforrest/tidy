@@ -1,4 +1,5 @@
 package com.lbi.animation.util {
+	import com.lbi.animation.single.OrphanEvent;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 
@@ -53,6 +54,9 @@ package com.lbi.animation.util {
 		}
 		public function addLabel(l:String) : void {
 			this.label = l;
+		}
+		public function waitForEvent(object : IEventDispatcher, event : String) : void {
+			addItem(new OrphanEvent(object, event));
 		}
 	}
 	}

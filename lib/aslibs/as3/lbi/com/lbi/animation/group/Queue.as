@@ -45,7 +45,7 @@ package com.lbi.animation.group {
 		private function playItem(item_id:Number) : void {
 			var item:IAnimation = items[item_id];
 			//item.setCompleteDelegate(complete_delegate);
-			item.addEventListener("complete", playNextItem);
+			item.addEventListener("complete", playNextItem,false,0,true);
 			item.go();
 		}
 

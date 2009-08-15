@@ -3,18 +3,18 @@ package com.lbi.debug {
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
-	import flash.ui.Keyboard;	
+	import flash.ui.Keyboard;
 	/**
 	 * @author michaelforrest
 	 */
 	public class DraggyClip {
 		public static function initialize(sprite : Sprite) : void {
-			
+
 			sprite.mouseChildren = false;
-			sprite.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown);	
-			sprite.addEventListener(MouseEvent.MOUSE_UP, onMouseUp)	;
-			sprite.addEventListener(MouseEvent.ROLL_OVER, addKeyListener);
-			sprite.addEventListener(MouseEvent.ROLL_OUT, removeKeyListener);
+			sprite.addEventListener(MouseEvent.MOUSE_DOWN,onMouseDown,false,0,true);
+			sprite.addEventListener(MouseEvent.MOUSE_UP, onMouseUp,false,0,true)	;
+			sprite.addEventListener(MouseEvent.ROLL_OVER, addKeyListener,false,0,true);
+			sprite.addEventListener(MouseEvent.ROLL_OUT, removeKeyListener,false,0,true);
 
 		}
 		public static function addKeyListener(event:Event):void {
@@ -42,9 +42,9 @@ package com.lbi.debug {
 		public static function _onKeyPress(event:KeyboardEvent):void{
 			var sprite : Sprite = event.target as Sprite;
 			var key_ascii : Number = event.keyCode;
-			
+
 			trace("pressed ", key_ascii);
-			
+
 			// = (equals) key
 			if(key_ascii==0x3D){
 				sprite.scaleX = sprite.scaleY = sprite.scaleX + 5;
@@ -78,7 +78,7 @@ package com.lbi.debug {
 				increment = 10;
 			}
 			if(key_ascii == Keyboard.LEFT) {
-	
+
 				sprite.x -= increment;
 			}
 			if(key_ascii == Keyboard.RIGHT) {
@@ -90,7 +90,7 @@ package com.lbi.debug {
 			if(key_ascii == Keyboard.DOWN){
 				sprite.y += increment;
 			}
-			
+
 		}
 	}
 }

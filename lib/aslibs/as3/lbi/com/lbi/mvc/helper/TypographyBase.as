@@ -187,7 +187,7 @@ package com.lbi.mvc.helper {
 
 			var fmt : TextFormat = style.getTextFormat();
 			txt.defaultTextFormat = fmt;
-
+			txt.setTextFormat(fmt);
 			return txt;
 		}
 	}

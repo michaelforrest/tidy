@@ -40,7 +40,7 @@ package com.lbi.animation.single {
 			__arguments = $args;
 		}
 		public function go() : void {
-			if(complete_event) object.addEventListener(complete_event, onComplete);
+			if(complete_event) object.addEventListener(complete_event, onComplete,false,0,true);
 			complete = false;
 			if(method != null) method.apply(object,__arguments);
 			if(!complete_event) onComplete(null);

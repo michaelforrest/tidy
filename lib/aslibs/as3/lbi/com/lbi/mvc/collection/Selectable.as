@@ -5,6 +5,13 @@ package com.lbi.mvc.collection {
 	public class Selectable extends EventMapper implements ISelectable{
 
 		public static const SELECTED : String = "selected";
+
+		// Gonna see how easy this makes testing!
+		public static var lastSelectedThing : Selectable;
+
+
+
+
 		protected function dispatchSelected():void {dispatchEvent(new Event(SELECTED));}
 		public static const DESELECTED : String = "deselected";
 
@@ -18,6 +25,7 @@ package com.lbi.mvc.collection {
 		public function select() : void {
 			if(__selected__) return;
 			__selected__ = true;
+			lastSelectedThing = this;
 			dispatchSelected();
 		}
 

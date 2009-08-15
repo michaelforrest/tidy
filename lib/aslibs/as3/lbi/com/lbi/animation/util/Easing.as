@@ -1,8 +1,7 @@
 package com.lbi.animation.util {
 
-	/**
-	 * see http://hosted.zeh.com.br/mctween/animationtypes.html
-	 */
+	// see http://hosted.zeh.com.br/mctween/animationtypes.html
+
 	public class Easing {
 		public static function linearTween(t:Number):Number {
 			return 1*t/1;

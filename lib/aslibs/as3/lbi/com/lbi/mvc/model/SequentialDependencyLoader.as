@@ -3,7 +3,7 @@ package com.lbi.mvc.model {
 
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import flash.events.ProgressEvent;	/**
+	/**
 	 * @author michaelforrest
 	 */
 	public class SequentialDependencyLoader extends EventDispatcher {
@@ -21,16 +21,10 @@ package com.lbi.mvc.model {
 				var klass : Class = dependencies[i];
 				var loaderDispatcher : XMLListLoaderDispatcher = new XMLListLoaderDispatcher(klass);
 				queue.addMethod(loaderDispatcher, loaderDispatcher.start, XMLListLoaderDispatcher.READY);
-				loaderDispatcher.addEventListener(ProgressEvent.PROGRESS, onLoadProgress)
 				//queue.addMessage("loaded xml for " + getQualifiedClassName(klass));
 			}
-			queue.addEventListener(Event.COMPLETE, onReady);
+			queue.addEventListener(Event.COMPLETE, onReady,false,0,true);
 			queue.go();
-		}
-		// called by anything that's loading
-		private function onLoadProgress(event : ProgressEvent) : void {
-			bytesLoaded = event.bytesLoaded;
-
 		}
 
 		private function onReady(event : Event) : void {

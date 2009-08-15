@@ -37,7 +37,11 @@ package com.lbi.mvc.collection {
 		}
 		private function set _current(v:Object):void{
 			__current = v;
-			__current.select();
+			try{
+				__current.select();
+			}catch(e : Error){
+				throw new Error("You probably need to make " + __current + " extend Selectable. " + e);
+			}
 		}
 
 		public var loop : Boolean;
@@ -54,9 +58,12 @@ package com.lbi.mvc.collection {
 			if($init_items && $init_items[0]) {
 				for (var i : Number = 0; i < $init_items[0].length; i++) {
 					var item:Object = $init_items[0][i];
-					push(item);
+					add(item);
 				}
 			}
+		}
+		public function selectFirst() :void{
+			select(first());
 		}
 		/**
 		 * Copies a normal array into this collection.
@@ -173,6 +180,9 @@ package com.lbi.mvc.collection {
 		public function first() : Object{
 			return this[0];
 		}
+		public function last() : Object{
+			return this[length-1];
+		}
 
 		public function getCurrentIndex() :Number{
 			return _index;
@@ -189,7 +199,12 @@ package com.lbi.mvc.collection {
 			//Log.error("Couldn't find item " + $item + " in Collection " + this);
 		}
 		public function toString() :String{
-			return "[Collection id:" + __id__ +" "+super.toString()+"]";
+			var result : String = "[Collection id:" + __id__ ;
+			for (var i : Number = 0; i < length; i++) {
+				var item:Object = this[i];
+				result += item.toString() + ",";
+			}
+			return result +"]";
 		}
 
 		public function registerEvents(view : Object, events : Array) : void {
@@ -200,6 +215,14 @@ package com.lbi.mvc.collection {
 			for (var i : Number = 0; i < this.length; i++) {
 				var item:Object = this[i];
 				if(item[$property]==value) return item;
+			}
+			return null;
+		}
+
+		public function findByExactProperty($property : String, value : Object) : Object {
+			for (var i : Number = 0; i < this.length; i++) {
+				var item:Object = this[i];
+				if(item[$property]===value) return item;
 			}
 			return null;
 		}
@@ -227,9 +250,12 @@ package com.lbi.mvc.collection {
 		public function clone() : Collection{
 			return new Collection(this);
 		}
+		public function reverse() : Collection{
+			return new Collection(super. reverse());
+		}
 
 		public function dispatchEvent(event : Event) : Boolean {
-			return event_mapper.dispatchEvent(event)
+			return event_mapper.dispatchEvent(event);
 		}
 
 		public function hasEventListener(type : String) : Boolean {
@@ -245,9 +271,26 @@ package com.lbi.mvc.collection {
 		}
 
 		public function addEventListener(type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {
-			event_mapper.addEventListener(type, listener);
-		}		public function registerAllEvents(view : Object) : void {
-			event_mapper.registerAllEvents(view);
+			event_mapper.addEventListener(type, listener,false,0,true);
+		}
+
+		public function unregisterEvents(view : Object, events : Array) : void {
+			event_mapper.unregisterEvents(view, events);
+		}
+//		override public function toString() : String {
+//			return "[Collection" + join(",") + "]";
+//		}
+		public function findAll(query : String) : Collection {
+			var results : Collection = new Collection();
+			try{
+				for (var i : int = 0; i < this.length; i++) {
+					var item : Matchable = this[i];
+					if(item.matches(query)) results.add(item);
+				}
+			} catch(e :Error){
+				throw new Error("You probably need to make " + this[0] + " implement Matchable. "+ e);
+			}
+			return results; 
 		}
 	}
 }

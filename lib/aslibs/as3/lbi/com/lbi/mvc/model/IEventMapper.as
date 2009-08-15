@@ -5,6 +5,6 @@ package com.lbi.mvc.model {
 	 */
 	public interface IEventMapper extends IEventDispatcher {
 		function registerEvents(view : Object,events : Array):void;
-		function registerAllEvents(view : Object) : void;
+		function unregisterEvents(view : Object, events : Array) : void;
 	}
 }

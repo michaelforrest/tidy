@@ -1,5 +1,10 @@
 package com.lbi.mvc.model {
-	import com.lbi.mvc.model.EventMapper;	import com.lbi.mvc.model.SequentialDependencyLoader;	import flash.events.Event;	import flash.events.EventDispatcher;	import flash.utils.getQualifiedClassName;
+	import com.lbi.mvc.model.EventMapper;
+	import com.lbi.mvc.model.SequentialDependencyLoader;
+
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+	import flash.utils.getQualifiedClassName;
 	/**
 	 * @author michaelforrest
 	 */
@@ -15,7 +20,7 @@ package com.lbi.mvc.model {
 		public function Application() {
 			setup();
 			dependencyLoader  = new SequentialDependencyLoader( dependencies);//.map(prepare));
-			dependencyLoader.addEventListener(SequentialDependencyLoader.READY, onXMLReady);
+			dependencyLoader.addEventListener(SequentialDependencyLoader.READY, onXMLReady,false,0,true);
 		}
 
 
@@ -35,12 +40,6 @@ package com.lbi.mvc.model {
 
 		protected function afterLoaded() : void {
 		}
-		public function getBytesTotal() : Number {
-			return PreloaderClip.OTHER_DATA_SIZE;
-		}
 
-		public function getBytesLoaded() : Number {
-			return dependencyLoader.getBytesLoaded();
-		}
 	}
 }

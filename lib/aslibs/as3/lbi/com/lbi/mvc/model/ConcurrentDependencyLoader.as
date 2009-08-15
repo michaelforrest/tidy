@@ -1,8 +1,8 @@
 package com.lbi.mvc.model {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	
-	import com.lbi.animation.group.Stack;	
+
+	import com.lbi.animation.group.Stack;
 	/**
 	 * @author michaelforrest
 	 */
@@ -16,7 +16,7 @@ package com.lbi.mvc.model {
 				var d : EventDispatcher = dependencies[i];
 				stack.addMethod(d, null, Event.COMPLETE);
 			}
-			stack.addEventListener(Event.COMPLETE, onReady);
+			stack.addEventListener(Event.COMPLETE, onReady,false,0,true);
 			stack.go();
 		}
 

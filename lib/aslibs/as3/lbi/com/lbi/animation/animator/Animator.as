@@ -70,10 +70,17 @@ package com.lbi.animation.animator {
 		}
 		public function listen(property:String, callback:Function, threshold : Number = 1):void{
 			if(threshold == 1){
-				change(property).addEventListener(Transition.COMPLETE, callback);
+				change(property).addEventListener(Transition.COMPLETE, callback,false,0,true);
 			}else{
 				change(property).listenForThreshold(threshold, callback);
 			}
 		}
+		public function unlisten(property:String,callback:Function) : void{
+			change(property).removeEventListener(Transition.COMPLETE, callback);
+		}
+		public function wait(frames:Number):void{
+			trace("wait not implemented") 
+		}
+
 	}
 }

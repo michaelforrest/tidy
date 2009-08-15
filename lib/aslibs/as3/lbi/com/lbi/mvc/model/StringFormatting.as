@@ -6,7 +6,7 @@ package com.lbi.mvc.model {
 		public static function formatTimeInCentiseconds(t : Number) : String {
 			var seconds:Number = Math.floor(t % 60);
 			var minutes:Number = Math.floor((t - seconds)/ 60 );
-			var centiseconds:Number = Math.floor(( t-Math.floor(t) ) * 100); 
+			var centiseconds:Number = Math.floor(( t-Math.floor(t) ) * 100);
 			return pad(minutes) + ":" + pad(seconds) + ":" + pad(centiseconds);
 		}
 		public static function formatTimeInSeconds(t : Number) : String {
@@ -14,7 +14,7 @@ package com.lbi.mvc.model {
 			var minutes:Number = Math.floor((t - seconds)/ 60 );
 			return pad(minutes) + ":" + pad(seconds) ;
 		}
-		
+
 		private static function pad(n : Number) : String {
 			var s:String = n.toString();
 			if(s.length==1) s = "0" + s;
@@ -27,16 +27,16 @@ package com.lbi.mvc.model {
 		public static function camelize($s:String):String{
 			var s_arr:Array = $s.split('_');
 		    if (s_arr.length == 1) return s_arr[0];
-		
+
 		    var camelizedString:String = $s.indexOf('_') == 0
 		      ? s_arr[0].charAt(0).toUpperCase() + s_arr[0].substring(1)
 		      : s_arr[0];
-		
+
 		    for (var i:Number = 1, len:Number = s_arr.length; i < len; i++) {
 		      var s:String = s_arr[i];
 		      camelizedString += s.charAt(0).toUpperCase() + s.substring(1);
 		    }
-		
+
 		    return camelizedString;
 		}
 		/**
@@ -53,11 +53,11 @@ package com.lbi.mvc.model {
 		 * ThisIsPascalCase
 		 */
 		public static function pascalize(underscore_separated : String) : String {
-			var s:String = camelize(underscore_separated);
+			var s:String = camelize(underscore_separated.toLowerCase());
 			var pascalized:String = s.charAt(0).toUpperCase() + s.substr(1,s.length-1);
 			return pascalized;
 		}
-		
+
 		public static function underscore(string : String) : String {
 			var alphabet : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			for (var i : Number = 0; i < alphabet.length; i++) {
@@ -70,19 +70,19 @@ package com.lbi.mvc.model {
 		/**
 		 * Trim functions from as2lib
 		 */
-		 
+
 		 public static function trim(string:String):String {
 			return leftTrim(rightTrim(string));
 		}
-		
+
 		public static function leftTrim(string:String):String {
 			return leftTrimForChars(string, "\n\t\n ");
 		}
-	
+
 		public static function rightTrim(string:String):String {
 			return rightTrimForChars(string, "\n\t\n ");
 		}
-		
+
 		public static function leftTrimForChars(string:String, chars:String):String {
 			var from:Number = 0;
 			var to:Number = string.length;
@@ -91,7 +91,7 @@ package com.lbi.mvc.model {
 			}
 			return (from > 0 ? string.substr(from, to) : string);
 		}
-		
+
 		public static function rightTrimForChars(string:String, chars:String):String {
 			var from:Number = 0;
 			var to:Number = string.length - 1;
@@ -100,17 +100,17 @@ package com.lbi.mvc.model {
 			}
 			return (to >= 0 ? string.substr(from, to+1) : string);
 		}
-		
+
 		public static function leftTrimForChar(string:String, char:String):String {
 			return leftTrimForChars(string, char.charAt(0));
 		}
-		
+
 		public static function rightTrimForChar(string:String, char:String):String {
 			return rightTrimForChars(string, char.charAt(0));
 		}
-		
+
 		private static var LINES_DELIMETERS : Array = ["\r\n", "\n\r", "\r", "\n"];
-		
+
 		public static function stripInLines ( s : String ) : Array
 		{
 			var res : Array = [];
@@ -123,12 +123,12 @@ package com.lbi.mvc.model {
 			}
 			return res;
 		}
-	
-	
+
+
 		public static function collectionize(class_name : String) : String {
 			return underscore(class_name).toLowerCase() + "s";			;
 		}
-		
+
 		public static function sentenceCase(underscored : String) : String {
 			var words : Array = underscored.split("_");
 			var first_word : String = words[0];

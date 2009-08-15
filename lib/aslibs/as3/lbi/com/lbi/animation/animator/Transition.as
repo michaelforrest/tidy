@@ -63,7 +63,7 @@ package com.lbi.animation.animator {
 
 		override public function addEventListener(type : String, listener : Function, useCapture : Boolean = false, priority : int = 0, useWeakReference : Boolean = false) : void {
 			removeEventListener(type, listener); // make sure it can only be done once. I think..
-			super.addEventListener(type, listener, useCapture, priority, useWeakReference);
+			super.addEventListener(type, listener, useCapture, priority, true);
 		}
 
 		public function trigger($target : Number) : void {
@@ -73,7 +73,7 @@ package com.lbi.animation.animator {
 //			Log.debug("setting " + this + " end point to " + end );
 			animation = new Animation(animate, 0, 1, frames);
 			cache = object[property];
-			animation.addEventListener("complete", dispatchComplete);
+			animation.addEventListener("complete", dispatchComplete,false,0,true);
 			animation.go();
 		}
 		public function interrupt() : void {
@@ -132,8 +132,11 @@ package com.lbi.animation.animator {
 
 		public function listenForThreshold(threshold : Number, callback : Function) : void {
 			this.threshold = threshold;
-			addEventListener(THRESHOLD_CROSSED, callback);
-		}		public function isInProgress() : Boolean {
-			return !(animation == null);		}
+			addEventListener(THRESHOLD_CROSSED, callback, false, 0, true);
+		}
+
+		public function isInProgress() : Boolean {
+			return !(animation == null);
+		}
 	}
 }

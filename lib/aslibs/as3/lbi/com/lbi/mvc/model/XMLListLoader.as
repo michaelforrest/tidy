@@ -44,9 +44,9 @@ import flash.utils.getQualifiedClassName;	/**
 		private function loadXML() : void {
 			var xml_request : URLRequest = new URLRequest(url);
 			loader.load(xml_request);
-			loader.addEventListener(Event.COMPLETE, onLoad);
-			loader.addEventListener(ProgressEvent.PROGRESS, onProgress);
-			loader.addEventListener(IOErrorEvent.IO_ERROR, onError);
+			loader.addEventListener(Event.COMPLETE, onLoad,false,0,true);
+			loader.addEventListener(ProgressEvent.PROGRESS, onProgress,false,0,true);
+			loader.addEventListener(IOErrorEvent.IO_ERROR, onError,false,0,true);
 
 		}
 		private function onError(event : IOErrorEvent) : void {
@@ -87,11 +87,11 @@ import flash.utils.getQualifiedClassName;	/**
 				trace("Loaded ",  $class[$collection_name].length, "instances into", getQualifiedClassName($class) + "."  +$collection_name, "from", $xml_url);
 				events.dispatchEvent(new Event(Event.COMPLETE));
 			};
-			xmlListLoader.addEventListener(READY, callback);
+			xmlListLoader.addEventListener(READY, callback,false,0,true);
 			var progressCallback : Function = function(e:ProgressEvent) : void{
 				events.dispatchEvent(e);
 			}
-			xmlListLoader.addEventListener(ProgressEvent.PROGRESS, progressCallback);
+			xmlListLoader.addEventListener(ProgressEvent.PROGRESS, progressCallback,false,0,true);
 			return events;
 		}
 	}
