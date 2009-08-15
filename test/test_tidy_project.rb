@@ -11,6 +11,7 @@ class TestTidyProject < Test::Unit::TestCase
         assert File.exists?('script'), "No script folder"
         assert File.exists?('rakefile.rb'), "No rakefile"
         assert_match "test_project", File.read('rakefile.rb')
+        assert File.exists?('lib/tasks'), "should be some tasks"
       end
     end
   end
