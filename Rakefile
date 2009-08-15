@@ -2,9 +2,9 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('g-project', '0.1.0') do |p|
-  p.description    = "Generate a project in Grimaceworks/LBi Standard Format"
-  p.url            = "http://github.com/michaelforrest/g-project"
+Echoe.new('tidy', '0.1.0') do |p|
+  p.description    = "Tidy Flash - an ActionScript framework for people who love Ruby"
+  p.url            = "http://github.com/michaelforrest/tidy"
   p.author         = "Michael Forrest"
   p.email          = "mf@grimaceworks.com"
   p.ignore_pattern = ["tmp/*", "script/*"]
