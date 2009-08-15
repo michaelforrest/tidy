@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+require 'rubygems'
+require 'activesupport'
 LANGUAGE = 'as3' #TODO: un-hard-code
 SCRIPT_PATH = File.join("script", LANGUAGE)
 def available_templates

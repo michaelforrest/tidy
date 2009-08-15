@@ -1,13 +1,12 @@
+
 def get_template_binding(template)
-  puts "GETTING TEMPLATE BINDING"
   Project.new(template)
 end
 
 class Project < LBi::TemplateBinding
   def initialize(params)
-    puts "WHAT WE GOT HERE THEN?"
-    puts(params.inspect)
     super(params)
+    @project_name = params.args[0]
   end
   def init!
 
