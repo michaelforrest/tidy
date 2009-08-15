@@ -181,3 +181,4 @@ pkg/tidy-0.1.2.tar.gz
 Rakefile
 README
 test/test_tidy_project.rb
+tidy.gemspec

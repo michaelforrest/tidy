@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('tidy', '0.1.2') do |p|
+Echoe.new('tidy', '0.1.3') do |p|
   p.description    = "Tidy Flash - an ActionScript framework for people who love Ruby"
   p.url            = "http://github.com/michaelforrest/tidy"
   p.author         = "Michael Forrest"
