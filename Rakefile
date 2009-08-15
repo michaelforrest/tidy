@@ -7,7 +7,7 @@ Echoe.new('tidy', '0.1.1') do |p|
   p.url            = "http://github.com/michaelforrest/tidy"
   p.author         = "Michael Forrest"
   p.email          = "mf@grimaceworks.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
+  p.ignore_pattern = ["tmp/**/*", "script/*"]
   p.development_dependencies = [  ]
 end
 

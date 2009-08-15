@@ -84,4 +84,5 @@ Rakefile
 README
 tasks/build.rake
 tasks/release.rake
-test/test
+test/test_tidy_project.rb
+tidy.gemspec
