@@ -4,7 +4,6 @@ require 'sprout/tasks/fcsh'
 require 'lib/tasks/demo_config'
 require 'lib/tasks/compile'
 require 'lib/tasks/assets'
-require 'lib/tasks/deploy'
 
 #desc 'compile and run air app (needs a couple of extra files manually created so far)' 
 #task :air do |t|
@@ -19,7 +18,7 @@ end
 
 desc 'Compile and run app'
 task :app do
-  Compile.swf :main=>'src/views/AppView.as', :output=>"<%= @project_name.underscore %>"
+  Compile.swf :main=>'src/app/views/AppView.as', :output=>"<%= @project_name.underscore %>"
 end
 
 #desc "regression tester"

@@ -9,8 +9,8 @@ end
 class Compile
   WIDTH, HEIGHT = 1200, 900
   DEFAULTS = { 
-    :default_background_color=>"#000000",
-    :default_frame_rate=> 60,
+    :default_background_color=>"#FFFFFF",
+    :default_frame_rate=> 30,
     :incremental=>true,
     :use_network=>false,
     :verbose_stacktraces=>true,

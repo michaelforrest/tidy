@@ -9,7 +9,6 @@ class Project < LBi::TemplateBinding
     @project_name = params.args[0]
   end
   def init!
-
     #puts "Getting LBi Useful libraries"
     #puts `svn co http://lbi-useful-actionscript-3.googlecode.com/svn/trunk/LBiUseful/project/src lib/lbi` 
   end

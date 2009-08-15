@@ -37,15 +37,19 @@ module LBi
     end
     
     def copy_files
-      pattern = File.join(template_path,"**/*.*")
+      pattern = File.join(template_path,"**/*")
       files = Dir.glob(pattern)
       files.each do |filename|
-        puts "templating in #{filename}"
-       copy_file(filename) unless filename == template_class
+        copy_file(filename) unless filename == template_class
       end
     end
     
     def copy_file(filename)
+      if File.directory?(filename)
+        
+        make_dirs(get_destination filename)
+        return
+      end
       contents = IO.read(filename)
       destination = get_destination(filename)
       make_dirs(File.split(destination)[0])
