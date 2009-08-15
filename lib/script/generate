@@ -40,7 +40,8 @@ module LBi
       pattern = File.join(template_path,"**/*.*")
       files = Dir.glob(pattern)
       files.each do |filename|
-       copy_file(filename) unless filename == template_class 
+        puts "templating in #{filename}"
+       copy_file(filename) unless filename == template_class
       end
     end
     
@@ -49,7 +50,7 @@ module LBi
       destination = get_destination(filename)
       make_dirs(File.split(destination)[0])
       
-      result = ERB.new(contents,0,"%").result(@template_binding.get_binding)
+      result = File.extname(filename) == ".erb" ? contents : ERB.new(contents,0,"%").result(@template_binding.get_binding)
       force = @force unless @force.nil?
       if File.exists?(destination) 
         if(force.nil?) 
