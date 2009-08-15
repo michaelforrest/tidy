@@ -2,7 +2,7 @@
 desc "release to github"
 task :git_release=>[:clean, :manifest, 'build:gemspec'] do
   puts "committing all changes"
-  `git commit -am "releasing"`
+  puts `git commit -am "releasing"`
   puts "pushing to github"
-  `git push`
+  puts `git push`
 end
