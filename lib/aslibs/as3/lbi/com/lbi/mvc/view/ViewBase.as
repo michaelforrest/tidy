@@ -31,7 +31,7 @@ package com.lbi.mvc.view {
 		public var nextY : Number = 0;
 		public var spacing : Number = 0;
 		public var leftMargin : Number = 0;
-		public var columnWidth : Number = 225;
+		public var columnWidth : Number = 600;
 		private var elements : Array;
 		public var topMargin : Number = 0;
 
@@ -194,7 +194,7 @@ package com.lbi.mvc.view {
 			}
 		}
 
-		public function text(text : String, style : String) : DisplayObject {
+		public function text(text : String, style : String = "") : DisplayObject {
 			var txt : TextField = addTextField(Typography.style(style), new Rectangle(leftMargin, 0, columnWidth, 1000));
 			txt.text = text;
 			txt.height = txt.textHeight + 4; // if 2px padding is still the strange magic number

@@ -18,7 +18,7 @@ end
 
 desc 'Compile and run app'
 task :app do
-  Compile.swf :main=>'src/app/views/AppView.as', :output=>"<%= @project_name.underscore %>"
+  Compile.swf :main=>'src/app/views/MainView.as', :output=>"<%= @project_name.underscore %>"
 end
 
 #desc "regression tester"

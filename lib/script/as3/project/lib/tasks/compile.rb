@@ -35,14 +35,14 @@ class Compile
     
     player.execute('/Applications/Adobe\ Flash\ CS4/Players/Debug/Flash\ Player.app', swf_url(args))
     
-    log_file = "/Users/michaelforrest/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt"
-    unless File.exists?("/Users/michaelforrest/mm.cfg")
-      File.open("/Users/michaelforrest/mm.cfg",'w') do |f|
+    log_file = File.expand_path "~/Library/Preferences/Macromedia/Flash\ Player/Logs/flashlog.txt"
+    unless File.exists?(File.expand_path "~/mm.cfg")
+      File.open(File.expand_path("~/mm.cfg"),'w') do |f|
         f.write <<-EOF
-          ErrorReportingEnable=1
-          MaxWarnings=0
-          TraceOutputEnable=1
-          TraceOutputFileName=#{log_file}
+ErrorReportingEnable=1
+MaxWarnings=0
+TraceOutputEnable=1
+TraceOutputFileName=#{log_file}
         EOF
       end
     end
@@ -60,6 +60,7 @@ class Compile
   end
   
   def self.read_log(thread, log_file)
+
     lines_put = 0
 
     if(!File.exists?(log_file))

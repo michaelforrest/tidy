@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title><%=@swf_name.humanize%> | Tidy Flash Page</title>
+		<script src="js/swfobject.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div style="width:800px;height:600px">
+			<div id="<%=@swf_name%>">You need Flash 10 to view this!</div>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			swfobject.embedSWF('<%=@swf_name%>.swf', '<%=@swf_name%>', "100%", "100%", '10');
+		</script>
+	</body>
+</html>

@@ -1,5 +1,4 @@
-All this does is copies my libraries into a Sprouts project folder.
-
+Following in the footsteps of Ruby On Rails, Processing, _why's Shoes and Luke Bayes' Sprouts library, here is a Flash framework that funnels the brilliance of all these people into a single set of libraries for developing Flash.
 USAGE:
 
 tidyproject SomeProject
