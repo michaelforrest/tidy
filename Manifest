@@ -45,7 +45,6 @@ lib/aslibs/as3/lbi/com/lbi/mvc/model/StringFormatting.as
 lib/aslibs/as3/lbi/com/lbi/mvc/model/XMLListLoader.as
 lib/aslibs/as3/lbi/com/lbi/mvc/model/XMLListLoaderDispatcher.as
 lib/aslibs/as3/lbi/com/lbi/mvc/view/ViewBase.as
-lib/aslibs/as3/lbi/com/quasimondo/geom/ColorMatrix.as
 lib/script/as2/lib/as2_class.rb
 lib/script/as2/lib/test/as2_class_test.rb
 lib/script/as2/lib/test/SampleClass.as
@@ -72,13 +71,17 @@ lib/script/as3/project/src/app/helpers/Colours.as
 lib/script/as3/project/src/app/helpers/Typography.as
 lib/script/as3/project/src/app/models/App.as
 lib/script/as3/project/src/app/models/FlashVars.as
-lib/script/as3/project/src/app/views/AppView.as
+lib/script/as3/project/src/app/views/MainView.as
+lib/script/as3/project/src/app/views/PreloaderView.as
 lib/script/as3/scaffold/bin/xml/__model.xml
 lib/script/as3/scaffold/scaffold.rb
 lib/script/as3/scaffold/src/models/__Model.as
 lib/script/as3/scaffold/src/views/__model/__ModelDetailView.as
 lib/script/as3/scaffold/src/views/__model/__ModelListItemView.as
 lib/script/as3/scaffold/src/views/__model/__ModelListView.as
+lib/script/as3/swfobject/bin/index.html
+lib/script/as3/swfobject/bin/js/swfobject.js
+lib/script/as3/swfobject/swfobject.rb
 lib/script/bwlimit.rb
 lib/script/generate
 lib/script/server
