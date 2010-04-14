@@ -1,7 +1,0 @@
-package <%=@package%>{
-public class <%=@class%> {
-	<% @vars.each do |key,value| %>
-		public static var <%=key%> : <%=value.class%> = <%=value.inspect.to_actionscript%>;
-	<% end %> 
-}
-}
