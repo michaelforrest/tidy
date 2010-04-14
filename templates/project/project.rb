@@ -3,7 +3,7 @@ def get_template_binding(template)
   Project.new(template)
 end
 
-class Project < LBi::TemplateBinding
+class Project < Tidy::TemplateBinding
   def initialize(params)
     super(params)
     @project_name = params.args[0]
