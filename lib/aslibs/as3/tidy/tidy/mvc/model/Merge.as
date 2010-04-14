@@ -10,6 +10,7 @@ package tidy.mvc.model {
 			for (var i : int = 0; i < objects.length; i++) {
 				var item : Object = objects[i];
 				item  = Merge.objects(extra, item);
+				result.push(item);
 			}
 			return result;
 		}

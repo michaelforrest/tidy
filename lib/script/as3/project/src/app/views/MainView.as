@@ -1,5 +1,5 @@
 package app.views {
-	import com.lbi.mvc.view.ViewBase;
+	import tidy.mvc.view.ViewBase;
 	/**
 	 * Main Entry Point Class
 	 * <%= credit %>

@@ -11,7 +11,7 @@ class Project < LBi::TemplateBinding
   def init!
     FileUtils.mkdir_p "bin"
     FileUtils.mkdir_p "assets"
-    #puts "Getting LBi Useful libraries"
+    #puts "Getting Tidy libraries"
     #puts `svn co http://lbi-useful-actionscript-3.googlecode.com/svn/trunk/LBiUseful/project/src lib/lbi` 
   end
 end

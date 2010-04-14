@@ -230,7 +230,7 @@ package tidy.mvc.collection {
 		public function findByExactProperty($property : String, value : Object) : Object {
 			for (var i : Number = 0; i < this.length; i++) {
 				var item:Object = this[i];
-				if(item[$property]===value) return item;
+				if( item.hasOwnProperty($property) && item[$property]===value) return item;
 			}
 			return null;
 		}

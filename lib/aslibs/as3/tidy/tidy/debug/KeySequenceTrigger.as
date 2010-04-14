@@ -23,6 +23,7 @@ package tidy.debug {
 		}
 
 		private function onKeyUp(e : KeyboardEvent) : void {
+			trace("trigged: " + e.charCode);
 			if(e.charCode==getNextCharacterCode()){
 				if(isLastCharacter()){
 					dispatchEvent(new Event(TRIGGERED));

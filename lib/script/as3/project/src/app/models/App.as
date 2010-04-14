@@ -1,7 +1,7 @@
 package app.models {
 	import flash.events.Event;
 
-	import com.lbi.mvc.model.EventMapper;
+	import tidy.mvc.model.EventMapper;
 	/**
 	 * <%= credit %>
 	 */

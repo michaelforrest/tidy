@@ -94,7 +94,7 @@ TraceOutputFileName=#{log_file}
       raise e
     end
   end
-  DEFAULT_PATHS = %w[src assets lib/lbi]
+  DEFAULT_PATHS = %w[src assets lib/tidy]
   def self.parse_options(args)
     options = args[:options] ? DEFAULTS.merge(args[:options]) : DEFAULTS
     paths = DEFAULT_PATHS

@@ -5,7 +5,7 @@ class TidyProject
   def initialize(project_name)
     @project_dir = project_name
     folder('script', '.')
-    folder("aslibs/#{LANGUAGE}/lbi", 'lib')
+    folder("aslibs/#{LANGUAGE}/tidy", 'lib')
     Dir.chdir(@project_dir) do
       command = "./script/generate project #{project_name}"
       puts "running #{command}"

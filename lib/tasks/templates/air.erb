@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<application xmlns="http://ns.adobe.com/air/application/1.5"> 
+    <id><%=@app_name.gsub(" ", "")%></id> 
+    <version><%=@version.chomp%></version> 
+    <filename><%=@app_name%></filename> 
+    <initialWindow> 
+        <content><%=@content%></content> 
+        <visible>true</visible> 
+        <x>400</x>
+				<y>50</y>
+        <width><%=@width%></width> 
+        <height><%=@height + 23%></height> 
+    </initialWindow> 
+    <icon>
+			<image128x128>icons/128x128/fubuntu_logo_128x128.png</image128x128>
+		</icon>
+</application>
