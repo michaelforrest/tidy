@@ -1,5 +1,10 @@
 package app.views{
+    import flash.display.MovieClip;
+    import flash.display.DisplayObject;
+    import flash.events.Event;
+    import flash.utils.getDefinitionByName;
 	public class PreloaderView extends MovieClip{
+	    
 		public function PreloaderView() {
 			stop();
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -22,7 +27,6 @@ package app.views{
 		}
 		private function init() : void {
 			var mainClass : Class = Class(getDefinitionByName("app.views.MainView"));
-			progressBar.animator.alpha = 0;
 			if(mainClass) {
 				var app : Object = new mainClass();
 				addChild(app as DisplayObject);
