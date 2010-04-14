@@ -11,7 +11,7 @@ class Axml
     @content = "#{@output}.swf"
     @width = args[:width] || 1200
     @height = args[:height] || 900
-    source = File.read( 'lib/tasks/templates/air.erb' )
+    source = File.read( 'lib/tasks/templates/air.axml.erb' )
     
     axml_file = "bin/#{@output}.axml"
 

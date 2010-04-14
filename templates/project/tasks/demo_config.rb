@@ -14,7 +14,7 @@ class String
 end
 class DemoConfig
   def initialize(options)
-    template = File.read( 'lib/tasks/templates/demo_config.erb' )
+    template = File.read( 'lib/tasks/templates/demo_config.as.erb' )
     @vars = options[:vars]
     @class  = options[:class]
     @package = ""
