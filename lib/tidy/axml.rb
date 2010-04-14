@@ -1,3 +1,4 @@
+require 'erb'
 module Tidy
   class Axml
     def initialize(args)

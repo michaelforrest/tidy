@@ -36,4 +36,3 @@ templates/swfobject/bin/index.html
 templates/swfobject/bin/js/swfobject.js
 templates/swfobject/swfobject.rb
 test/test_tidy_project.rb
-tidy.gemspec

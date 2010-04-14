@@ -1,5 +1,5 @@
 require "test/unit"
-
+require "open3"
 require 'ftools'
 class TestTidyProject < Test::Unit::TestCase
   TEST_PROJECT_NAME = "TestProject"
@@ -22,15 +22,27 @@ class TestTidyProject < Test::Unit::TestCase
     end
   end
   
-  def test_build
-    require 'tidy/compile'
+  #def test_build
+  #  require 'tidy/compile'
+  #  in_project_folder do
+  #    #puts `rake`
+  #    Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
+  #                :output=>TEST_PROJECT_FILE_NAME
+  #                #:do_not_launch=>true
+  #                )
+  #    assert File.exists?("bin/#{TEST_PROJECT_FILE_NAME}.swf"), "Rake did not produce swf file"
+  #  end
+  #end
+  def test_rake
+    $:.unshift(File.expand_path('lib', __FILE__))
     in_project_folder do
-      #puts `rake`
-      Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
-                  :output=>TEST_PROJECT_FILE_NAME
-                  #:do_not_launch=>true
-                  )
-      assert File.exists?('bin/#{TEST_PROJECT_FILE_NAME}.swf'), "Rake did not produce swf file"
+      command = "rake --trace"
+      stdin, stdout, stderr = Open3.popen3(command)
+      stdout_text = stdout.read
+      stderr_text = stdout.read
+      puts "#{stdout_text}\n#{stderr_text}"
+      assert_no_match /rake aborted/, stderr_text
+      assert File.exists?("bin/#{TEST_PROJECT_FILE_NAME}.swf"), "Rake did not produce swf file"
     end
   end
   
