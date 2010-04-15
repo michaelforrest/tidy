@@ -70,14 +70,18 @@ module Tidy
         puts "#{stdout.read}\n#{stderr.read}"
         return
       end
-      
-      result =  Sprout::FCSHSocket.execute command
- 
-      if (result =~ /fcsh: Target \d+ not found/)
+      begin
+        result =  Sprout::FCSHSocket.execute command
+      rescue
+      #if (result =~ /Connection refused/)
           puts "*******************"
           puts "* Starting FCSH   *"
           puts "*******************"
-          #raise e
+          Dir.chdir("script/fcsh") do
+            require 'open3'
+            stdin, stdout, stderr = Open3.popen3("rake fcsh:start")
+            puts "#{stdout.read}\n#{stderr.read}"   
+          end
       end
     end
     DEFAULT_PATHS = %w[src assets ~/.tidy/tidy-as3]

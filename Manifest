@@ -1,6 +1,7 @@
 Manifest
 README
 Rakefile
+bin/test_project.axml
 bin/tidyproject
 lib/script/bwlimit.rb
 lib/script/generate
@@ -19,6 +20,7 @@ lib/tidy/templates/demo_config.as.erb
 lib/tidy_project.rb
 templates/project/project.rb
 templates/project/rakefile.rb
+templates/project/script/fcsh/rakefile.rb
 templates/project/src/app/helpers/Colours.as
 templates/project/src/app/helpers/Debug.as
 templates/project/src/app/helpers/Typography.as
