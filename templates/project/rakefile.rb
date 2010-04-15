@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'tidy/compile'
 
 #desc 'compile and run air app (needs a couple of extra files manually created so far)' 
