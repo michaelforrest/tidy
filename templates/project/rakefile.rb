@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'tidy/compile'
-
+require 'tidy/air_packager'
 #desc 'compile and run air app (needs a couple of extra files manually created so far)' 
 #task :air do |t|
 #  Compile.air :main=>"src/Fubuntu.as", :output=>"Fubuntu-air"  
@@ -17,6 +17,9 @@ task :app do
               :output=>"<%= @project_name.underscore %>", 
               :version=> "0.1")
 
+end
+task :package do
+  Tidy::AirPackager.package("<%= @project_name.underscore %>", %w[])
 end
 
 #desc "regression tester"
