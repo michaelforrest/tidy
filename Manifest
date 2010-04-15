@@ -2,7 +2,7 @@ Manifest
 README
 Rakefile
 bin/test_project.axml
-bin/tidyproject
+bin/tidyflash
 lib/script/bwlimit.rb
 lib/script/generate
 lib/script/server
