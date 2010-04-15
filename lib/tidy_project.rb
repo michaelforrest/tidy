@@ -8,7 +8,7 @@ class TidyProject
   def initialize(project_name)
     unless File.exists?(File.expand_path("~/.tidy/tidy-as3"))
       puts "You don't have the tidy as3 libs installed. Attempting to pull them from github..."
-      command = "git clone git://github.com/michaelforrest/tidy.git ~/.tidy/tidy-as3"
+      command = "git clone git://github.com/michaelforrest/tidy-as3.git ~/.tidy/tidy-as3"
       puts command
       stdin, stdout, stderr = Open3.popen3(command)
       puts "#{stdout.read}\n#{stderr.read}"

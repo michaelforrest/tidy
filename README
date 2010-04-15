@@ -2,11 +2,23 @@ Following in the footsteps of Ruby On Rails, Processing, _why's Shoes and Luke B
 
 USAGE:
 
-tidyproject SomeProject
-cd SomeProject
-rake
+	tidyproject SomeProject
+	cd SomeProject
+	rake
 
 BEFORE YOU START (on Ubuntu)
 
-sudo apt-get install ruby rake rubygems libopenssl-ruby git-core
-gem install tidyflash
+	sudo apt-get install ruby rake rubygems libopenssl-ruby git-core ubuntu-restricted-extras
+	gem install tidyflash
+
+and make sure you have the rubygems bin folders in your path
+	edit ~/.bashrc
+add the line:
+	export PATH=/var/lib/gems/1.8/bin:~/.gem/ruby/1.8/bin:$PATH
+
+
+and for now, hack
+
+/var/lib/gems/1.8/gems/sprout-as3-bundle-1.0.36/lib/sprout/fcsh_service.rb 
+
+to reference flex4sdk instead of flex3sdk

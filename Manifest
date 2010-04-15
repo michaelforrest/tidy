@@ -10,6 +10,7 @@ lib/script/server.rb
 lib/tasks/assets.rb
 lib/tasks/demo_config.rb
 lib/tasks/deploy.rb
+lib/tidy/air_packager.rb
 lib/tidy/axml.rb
 lib/tidy/compile.rb
 lib/tidy/generate.rb
@@ -38,4 +39,3 @@ templates/swfobject/bin/index.html
 templates/swfobject/bin/js/swfobject.js
 templates/swfobject/swfobject.rb
 test/test_tidy_project.rb
-tidyflash.gemspec
