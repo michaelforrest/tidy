@@ -1,4 +1,12 @@
 Following in the footsteps of Ruby On Rails, Processing, _why's Shoes and Luke Bayes' Sprouts library, here is a Flash framework that funnels the brilliance of all these people into a single set of libraries for developing Flash.
+
 USAGE:
 
 tidyproject SomeProject
+cd SomeProject
+rake
+
+BEFORE YOU START (on Ubuntu)
+
+sudo apt-get install ruby rake rubygems libopenssl-ruby git-core
+gem install tidyflash
