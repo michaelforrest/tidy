@@ -19,7 +19,7 @@ to reference flex4sdk instead of flex3sdk
 
 USAGE:
 
-	tidyproject SomeProject
+	tidyflash SomeProject
 	cd SomeProject
 	rake
 
