@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'tidy/compile'
 require 'tidy/air_packager'
+Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
 #desc 'compile and run air app (needs a couple of extra files manually created so far)' 
 #task :air do |t|
 #  Compile.air :main=>"src/Fubuntu.as", :output=>"Fubuntu-air"  
