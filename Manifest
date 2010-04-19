@@ -29,7 +29,7 @@ templates/project/src/app/models/App.as
 templates/project/src/app/models/FlashVars.as
 templates/project/src/app/views/MainView.as
 templates/project/src/app/views/PreloaderView.as
-templates/project/tasks/flash_libraries.rake
+templates/project/src/app/views/ViewBase.as
 templates/scaffold/bin/xml/__model.xml
 templates/scaffold/scaffold.rb
 templates/scaffold/src/models/__Model.as
@@ -40,3 +40,4 @@ templates/swfobject/bin/index.html
 templates/swfobject/bin/js/swfobject.js
 templates/swfobject/swfobject.rb
 test/test_tidy_project.rb
+tidyflash.gemspec
