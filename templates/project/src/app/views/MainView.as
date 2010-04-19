@@ -1,5 +1,6 @@
 package app.views {
-	import tidy.mvc.view.ViewBase;
+	import app.views.ViewBase;
+	
 	/**
 	 * Main Entry Point Class
 	 * <%= credit %>
@@ -8,8 +9,9 @@ package app.views {
 	public class MainView extends ViewBase {
 
 		public function MainView() {
-			super({paddingLeft:20, paddingTop:20, columnWidth:600 });
-			trace("Hello from this src/app/views/MainView")
+			super();
+			trace("Hello from this src/app/views/MainView");
+			
 			append(text("It worked! Edit this view in src/app/views/MainView"));
 		}
 	}
