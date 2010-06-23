@@ -19,6 +19,7 @@ lib/tidy/template_binding.rb
 lib/tidy/templates/air.axml.erb
 lib/tidy/templates/demo_config.as.erb
 lib/tidy_project.rb
+templates/project/assets/fonts/Fonts.as
 templates/project/project.rb
 templates/project/rakefile.rb
 templates/project/script/fcsh/rakefile.rb
@@ -40,4 +41,3 @@ templates/swfobject/bin/index.html
 templates/swfobject/bin/js/swfobject.js
 templates/swfobject/swfobject.rb
 test/test_tidy_project.rb
-tidyflash.gemspec

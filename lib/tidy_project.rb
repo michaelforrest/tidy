@@ -10,9 +10,7 @@ class TidyProject
       puts "You don't have the tidy as3 libs installed. Attempting to pull them from github..."
       command = "git clone git://github.com/michaelforrest/tidy-as3.git ~/.tidy/tidy-as3"
       puts command
-      stdin, stdout, stderr = Open3.popen3(command)
-      puts "#{stdout.read}\n#{stderr.read}"
-      
+      IO.popen(command) { |process| process.each { |line| puts line } }
     end
     @project_dir = project_name
     raise "Project already exists" if File.exists? project_name
