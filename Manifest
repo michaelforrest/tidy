@@ -25,6 +25,7 @@ templates/project/rakefile.rb
 templates/project/script/fcsh/rakefile.rb
 templates/project/src/app/helpers/Colours.as
 templates/project/src/app/helpers/Debug.as
+templates/project/src/app/helpers/Style.as
 templates/project/src/app/helpers/Typography.as
 templates/project/src/app/models/App.as
 templates/project/src/app/models/FlashVars.as
