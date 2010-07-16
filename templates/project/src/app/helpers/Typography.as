@@ -1,6 +1,7 @@
+
 package app.helpers {
 	import tidy.mvc.helper.TypographyBase;
-	import fonts.Fonts;
+	import assets.fonts.Fonts;
 	// import 
 	/**
 	 * <%= credit %>
@@ -55,15 +56,16 @@ package app.helpers {
 		}
 		/*
         // USAGE:
-        // myViewBase.text("Text to show", "Heading1");  
+        // myViewBase.text("Text to show", "Heading1"); 
 		public function Heading1() : void{
 		
 		}
+		*/
         // USAGE:
         // myViewBase.text("Text to show", "Paragraph"); 
 		public function Paragraph() : void{
 		
 		}
-		*/
+		
 	}
 }

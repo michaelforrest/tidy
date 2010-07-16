@@ -26,14 +26,18 @@ class TestTidyProject < Test::Unit::TestCase
   #  end
   #  
   #end
-  def test_fcsh
-    in_project_folder do
-      Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
-                  :output=>TEST_PROJECT_FILE_NAME
-                  #:do_not_launch=>true
-                  )
-      end
-  end
+	#  def test_fcsh
+	#    in_project_folder do
+	#      Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
+	#                  :output=>TEST_PROJECT_FILE_NAME
+	#                  #:do_not_launch=>true
+	#                  )
+	#      end
+	#  end
+
+# do packaging
+# test content in package
+
   #def test_build
   #  
   #  in_project_folder do
