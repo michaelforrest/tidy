@@ -1,8 +1,9 @@
 require 'rubygems'
 require 'rake'
 require 'echoe'
+require 'lib/tidy/version'
 
-Echoe.new('tidyflash', '0.9.1') do |p|
+Echoe.new('tidyflash', Tidy::Version.number) do |p|
   p.description    = "Tidy Flash - an ActionScript framework for people who love Ruby"
   p.url            = "http://github.com/michaelforrest/tidy"
   p.author         = "Michael Forrest"

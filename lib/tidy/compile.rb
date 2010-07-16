@@ -14,6 +14,7 @@ end
 require 'sprout/user'
 require 'sprout/fcsh_socket'
 require "#{File.expand_path(File.dirname(__FILE__))}/axml"
+require "#{File.expand_path(File.dirname(__FILE__))}/version"
 
 def method_name
   
@@ -63,6 +64,7 @@ module Tidy
     end
   
     def self.build(args,command)
+      puts "Compiling with TidyFlash #{Tidy::Version.number}"
       #puts "cd #{FileUtils.pwd} && #{command}"
       command_result = command
       filtered_result = command_result.to_a.map{|l| l unless l.match(/^Reason|^Recompile/)}.compact
@@ -81,9 +83,7 @@ module Tidy
           puts "* Starting FCSH   *"
           puts "*******************"
           Dir.chdir("script/fcsh") do
-            require 'open3'
-            stdin, stdout, stderr = Open3.popen3("rake fcsh:start")
-            puts "#{stdout.read}\n#{stderr.read}"   
+            IO.popen("rake fcsh:start"){ |process| process.each { |line| puts line } }
           end
       end
     end
