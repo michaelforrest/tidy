@@ -19,7 +19,6 @@ lib/tidy/template_binding.rb
 lib/tidy/templates/air.axml.erb
 lib/tidy/templates/demo_config.as.erb
 lib/tidy_project.rb
-templates/project/assets/fonts/Fonts.as
 templates/project/project.rb
 templates/project/rakefile.rb
 templates/project/script/fcsh/rakefile.rb
@@ -32,6 +31,7 @@ templates/project/src/app/models/FlashVars.as
 templates/project/src/app/views/MainView.as
 templates/project/src/app/views/PreloaderView.as
 templates/project/src/app/views/ViewBase.as
+templates/project/src/assets/fonts/Fonts.as
 templates/scaffold/bin/xml/__model.xml
 templates/scaffold/scaffold.rb
 templates/scaffold/src/models/__Model.as

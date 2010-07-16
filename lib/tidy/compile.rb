@@ -15,12 +15,16 @@ require 'sprout/user'
 require 'sprout/fcsh_socket'
 require "#{File.expand_path(File.dirname(__FILE__))}/axml"
 
+def method_name
+  
+end
+
 module Tidy
   class Compile
     WIDTH, HEIGHT = 1200, 900
     DEFAULTS = { 
       :default_background_color=>"#000000",
-      :default_frame_rate=> 60,
+      :default_frame_rate=> 30,
       #:incremental=>true,
       :use_network=>false,
       :verbose_stacktraces=>true
@@ -34,11 +38,11 @@ module Tidy
     # :width, :height, :output, etc...
     # and underscore_versions of the compiler arguments
     def self.air(args) 
-      build args, "mxmlc +configname=air " + parse_options(args.merge(:options=>{:define=>["CONFIG::air,true","CONFIG::swf,false"]}))
+      build args, "mxmlc +configname=air " + parse_options(args)
       Axml.new( args )
       unless args[:do_not_launch]
         File.delete File.expand_path("~/mm.cfg") if File.exists? File.expand_path("~/mm.cfg")
-        puts `adl bin/#{args[:output]}.axml`
+        IO.popen("adl bin/#{args[:output]}.axml"){ |process| process.each { |line| puts line } }
       end
     end
   
@@ -65,9 +69,7 @@ module Tidy
       
       unless File.exists?(swf_url args)
         puts "Building for first time"
-        require 'open3'
-        stdin, stdout, stderr = Open3.popen3(command)
-        puts "#{stdout.read}\n#{stderr.read}"
+        IO.popen(command){ |process| process.each { |line| puts line } }
         return
       end
       begin

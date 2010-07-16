@@ -16,7 +16,10 @@ desc 'Compile and run app'
 task :app do
   Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
               :output=>"<%= @project_name.underscore %>", 
-              :version=> "0.1")
+              :version=> "0.1",
+              :width=>1024,
+              :height=>768,
+              :default_background_color=>"#FFFFFF")
 
 end
 task :package do
