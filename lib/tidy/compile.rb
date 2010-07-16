@@ -37,7 +37,9 @@ module Tidy
       build args, "mxmlc +configname=air " + parse_options(args.merge(:options=>{:define=>["CONFIG::air,true","CONFIG::swf,false"]}))
       Axml.new( args )
       unless args[:do_not_launch]
-        File.delete File.expand_path("~/mm.cfg") if File.exists? File.expand_path("~/mm.cfg")
+      	if File.exists? File.expand_path("~/mm.cfg")
+        	File.rename(File.expand_path("~/mm.cfg"), File.expand_path("~/mm.cfg") + ".bak")
+        end
         puts `adl bin/#{args[:output]}.axml`
       end
     end
