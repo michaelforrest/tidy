@@ -37,7 +37,8 @@ module Tidy
     # args can include:
     # :width, :height, :output, etc...
     # and underscore_versions of the compiler arguments
-    def self.air(args) 
+
+   def self.air(args) 
       build args, "mxmlc +configname=air " + parse_options(args)
       Axml.new( args )
       unless args[:do_not_launch]
@@ -45,7 +46,7 @@ module Tidy
         IO.popen("adl bin/#{args[:output]}.axml"){ |process| process.each { |line| puts line } }
       end
     end
-  
+
   
     #
     # TODO: make adl launch an air file with a webkit instance and the swf inside it
