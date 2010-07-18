@@ -13,7 +13,12 @@ module Tidy
       @content = "#{@output}.swf"
       @width = args[:width] || 1200
       @height = args[:height] || 900
-      source = File.read( "#{File.expand_path(File.dirname(__FILE__))}/templates/air.axml.erb" )
+      # check which if application template is available use array
+      locations = [
+      	"config/templates/#{@output}.axml.erb",
+      	"config/templates/air.axml.erb"
+      ]
+      source = File.read(getFirstExistingFileFromArray(locations))
     
       axml_file = "bin/#{@output}.axml"
 
@@ -24,6 +29,16 @@ module Tidy
       File.open(axml_file,'w') do |f|
         f << template.result(binding)
       end
+    end
+    
+    def getFirstExistingFileFromArray(files)
+    	files.each do |file|
+    		if File.exists?(file)
+    			return file
+    		end
+    	end
+    	puts "CAN'T find existing file in #{files}"
+    	# throw error
     end
   
   
