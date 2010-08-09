@@ -91,7 +91,8 @@ module Tidy
     end
     DEFAULT_PATHS = %w[src assets ~/.tidy/tidy-as3]
     def self.parse_options(args)
-      options = args ? DEFAULTS.merge(args) : DEFAULTS
+      options = args[:options] ? DEFAULTS.merge(args[:options]) : DEFAULTS
+	  #options = args ? DEFAULTS.merge(args) : DEFAULTS
       paths = DEFAULT_PATHS
       paths = args[:paths].concat(DEFAULT_PATHS) unless args[:paths].nil?
       paths = paths.map{|path| "-source-path+=#{File.expand_path path}" }.join(" ")
