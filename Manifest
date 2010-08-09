@@ -16,9 +16,10 @@ lib/tidy/compile.rb
 lib/tidy/generate.rb
 lib/tidy/template.rb
 lib/tidy/template_binding.rb
-lib/tidy/templates/air.axml.erb
 lib/tidy/templates/demo_config.as.erb
+lib/tidy/version.rb
 lib/tidy_project.rb
+templates/project/config/templates/air.axml.erb
 templates/project/project.rb
 templates/project/rakefile.rb
 templates/project/script/fcsh/rakefile.rb
