@@ -64,35 +64,29 @@ module Tidy
                     :output=>"demos/#{args[:output]}/DemoConfig.as")
       air(args.merge(:paths=>["demos/#{args[:output]}"]))
     end
+    
+    def self.get_compile_command(args, initial_command)
+    	command = initial_command + " " + parse_options(args)
+    	command_result = command
+      	return command
+    end
   
     def self.build(args,command)
       puts "Compiling with TidyFlash #{Tidy::Version.number}"
       #puts "cd #{FileUtils.pwd} && #{command}"
+=begin
       command_result = command
       filtered_result = command_result.to_a.map{|l| l unless l.match(/^Reason|^Recompile/)}.compact
       puts filtered_result
-      
-      unless File.exists?(swf_url args)
-        puts "Building for first time"
-        IO.popen(command){ |process| process.each { |line| puts line } }
-        return
-      end
-      begin
-        result =  Sprout::FCSHSocket.execute command
-      rescue
-      #if (result =~ /Connection refused/)
-          puts "*******************"
-          puts "* Starting FCSH   *"
-          puts "*******************"
-          Dir.chdir("script/fcsh") do
-            IO.popen("rake fcsh:start"){ |process| process.each { |line| puts line } }
-          end
-      end
+=end
+      IO.popen(command){ |process| process.each { |line| puts line } }
     end
     DEFAULT_PATHS = %w[src assets ~/.tidy/tidy-as3]
     def self.parse_options(args)
-      options = args[:options] ? DEFAULTS.merge(args[:options]) : DEFAULTS
-	  #options = args ? DEFAULTS.merge(args) : DEFAULTS
+      options = DEFAULTS.dup()
+      options.each_pair do |k,v|
+		options[k] = args[k] unless args[k].nil?
+	  end
       paths = DEFAULT_PATHS
       paths = args[:paths].concat(DEFAULT_PATHS) unless args[:paths].nil?
       paths = paths.map{|path| "-source-path+=#{File.expand_path path}" }.join(" ")

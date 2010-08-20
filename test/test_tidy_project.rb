@@ -17,6 +17,21 @@ class TestTidyProject < Test::Unit::TestCase
     end
   end
   
+  def test_parse_options
+  	args = {:main=>'src/app/views/MainView.as', 
+              :output=>"multi_touch_window_02", 
+              :version=> "0.1",
+              :width=>640,
+              :height=>480,
+              :default_background_color=>"#FFFFFF",
+              :paths=>["../multi-touch-lib/src", "../as3-lib/src"]}
+    command = Tidy::Compile.parse_options(args);
+    assert_nil(command =~ /width/, "custom parameters shouldn't be passed to the compiler")
+    assert_not_nil(command =~/#FFFFFF/,"default parameters should be overriden");
+    assert_not_nil(command =~/\/multi-touch-lib\/src/,"extra path should be added");
+    assert_not_nil(command =~/\/as3-lib\/src/,"extra path should be added");
+  end
+
   def test_air_main_template
   	in_project_folder do
   		template_path = 'config/templates/air.axml.erb';
@@ -79,7 +94,6 @@ class TestTidyProject < Test::Unit::TestCase
   		i=i+1
   	end
   end
-
   #def test_add_libs
   #  in_project_folder do
   #    assert File.exists?('script'), "No script folder"
