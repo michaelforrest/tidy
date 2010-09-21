@@ -18,6 +18,8 @@ class TestTidyProject < Test::Unit::TestCase
   end
   
   def test_parse_options
+  	#ENV['SPROUT_FLEX4SDK_TOOL'] = "/Users/christian/Library/Sprouts/cache/0.7/sprout-flex3sdk-tool-3.5.1"	
+  	
   	args = {:main=>'src/app/views/MainView.as', 
               :output=>"multi_touch_window_02", 
               :version=> "0.1",

@@ -23,7 +23,7 @@ task :app do
 
 end
 task :package do
-  Tidy::AirPackager.package("<%= @project_name.underscore %>", %w[])
+  Tidy::AirPackager.package(:id=>"<%= @project_name.underscore %>")
 end
 
 #desc "regression tester"
