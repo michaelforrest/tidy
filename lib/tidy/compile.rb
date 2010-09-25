@@ -15,6 +15,7 @@ require 'sprout/user'
 require 'sprout/fcsh_socket'
 require "#{File.expand_path(File.dirname(__FILE__))}/axml"
 require "#{File.expand_path(File.dirname(__FILE__))}/version"
+require "#{File.expand_path(File.dirname(__FILE__))}/demo_config"
 
 def method_name
   
@@ -43,9 +44,9 @@ module Tidy
       build args, "mxmlc +configname=air " + parse_options(args)
       Axml.new( args )
       unless args[:do_not_launch]
-      	if File.exists? File.expand_path("~/mm.cfg")
-        	File.rename(File.expand_path("~/mm.cfg"), File.expand_path("~/mm.cfg") + ".bak")
-        end
+      	#if File.exists? File.expand_path("~/mm.cfg")
+        #	File.rename(File.expand_path("~/mm.cfg"), File.expand_path("~/mm.cfg") + ".bak")
+        #end
         puts `adl bin/#{args[:output]}.axml`
       end
     end
@@ -61,8 +62,8 @@ module Tidy
     def self.demo(args)
       DemoConfig.new(:vars=>args[:vars] || {}, 
                     :class=>'DemoConfig', 
-                    :output=>"demos/#{args[:output]}/DemoConfig.as")
-      air(args.merge(:paths=>["demos/#{args[:output]}"]))
+                    :output=>"src/DemoConfig.as")
+      air(args.merge(:paths=>["src"]))
     end
     
     def self.get_compile_command(args, initial_command)
@@ -73,6 +74,7 @@ module Tidy
   
     def self.build(args,command)
       puts "Compiling with TidyFlash #{Tidy::Version.number}"
+      puts "will execute: #{command}"
       #puts "cd #{FileUtils.pwd} && #{command}"
 =begin
       command_result = command

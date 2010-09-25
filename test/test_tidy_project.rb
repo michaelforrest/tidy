@@ -17,6 +17,20 @@ class TestTidyProject < Test::Unit::TestCase
     end
   end
   
+	def test_demo
+		in_project_folder do
+		  	Tidy::Compile.demo(:main=>'src/app/views/MainView.as', 
+				:output=>TEST_PROJECT_FILE_NAME, 
+		        :version=> "0.1",
+		        :vars=>{:isTouch=>true,
+		        	:variation=>0},
+		        :do_not_launch=>true)
+			config_file = File.new('src/DemoConfig.as','r')
+	        assert file_contains_string?(config_file, 'isTouch : Boolean = true'), 'DemoConfig.as should add booleans'
+	        assert file_contains_string?(config_file, 'variation : Number = 0'), 'DemoConfig.as should add numbers'
+		end
+	end
+ 
   def test_parse_options
   	#ENV['SPROUT_FLEX4SDK_TOOL'] = "/Users/christian/Library/Sprouts/cache/0.7/sprout-flex3sdk-tool-3.5.1"	
   	
@@ -96,6 +110,15 @@ class TestTidyProject < Test::Unit::TestCase
   		i=i+1
   	end
   end
+
+	def file_contains_string?(file, string)
+		while (line = file.gets)
+  			if line.include? string
+  				return true
+  			end
+  		end
+  		return false
+	end
   #def test_add_libs
   #  in_project_folder do
   #    assert File.exists?('script'), "No script folder"

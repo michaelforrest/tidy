@@ -37,7 +37,7 @@ module Tidy
     			return file
     		end
     	end
-    	puts "CAN'T find existing file in #{files}"
+    	raise "CAN'T find existing file in #{files.inspect} running in #{File.expand_path('.')}"
     	# throw error
     end
   
