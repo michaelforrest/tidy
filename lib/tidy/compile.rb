@@ -83,7 +83,7 @@ module Tidy
 =end
       IO.popen(command){ |process| process.each { |line| puts line } }
     end
-    DEFAULT_PATHS = %w[src assets ~/.tidy/tidy-as3]
+    DEFAULT_PATHS = %w[src ~/.tidy/tidy-as3]
     def self.parse_options(args)
       options = DEFAULTS.dup()
       options.each_pair do |k,v|

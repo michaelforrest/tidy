@@ -8,11 +8,11 @@ lib/script/generate
 lib/script/server
 lib/script/server.rb
 lib/tasks/assets.rb
-lib/tasks/demo_config.rb
 lib/tasks/deploy.rb
 lib/tidy/air_packager.rb
 lib/tidy/axml.rb
 lib/tidy/compile.rb
+lib/tidy/demo_config.rb
 lib/tidy/generate.rb
 lib/tidy/template.rb
 lib/tidy/template_binding.rb
