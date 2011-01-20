@@ -13,10 +13,14 @@ end
 
 parser = OptionParser.new do |options|
   options.banner = <<-BANNER
-    Tidy is an ActionScript framework for people who love Ruby
+  
+    Tidy is an ActionScript toolkit for people who love Ruby.
+    See http://github.com/michaelforrest/tidy
     
-    Usage: #{File.basename($0)}
-    - adds necessary stuff to project
+    Usage: #{File.basename($0)} APP_PATH
+           cd APP_PATH
+           rake
+          
   BANNER
   
   options.separator ""
@@ -28,6 +32,8 @@ parser = OptionParser.new do |options|
   
 end
 
-puts ">> adding stuff to project"
-fail_with ARGV, "Please specify a project name!" if ARGV.length < 1
-TidyProject.new(ARGV[0])
+if ARGV.length >= 1
+  TidyProject.new(ARGV[0])
+else
+  puts parser.banner
+end
