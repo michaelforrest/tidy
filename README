@@ -1,25 +1,38 @@
-Following in the footsteps of Ruby On Rails, Processing, _why's Shoes and Luke Bayes' Sprouts library, here is a Flash framework that funnels the brilliance of all these people into a single set of libraries for developing Flash.
+Ruby just makes you want to do things neatly. Even Flash development.
 
-INSTALLATION (on Ubuntu)
+TidyFlash sets up a project that follows a set of conventions simplifying
+	- Typography
+	- Animation
+	- MVC
+	- XML parsing
+	- Preloading
+	- Layout
+	- Low-bandwidth simulation
+	- Unit testing
+	- AIR development
+
+USAGE:
+	tidyflash SomeProject
+	cd SomeProject
+	rake
+
+
+INSTALLATION ON MAC:
+	gem install tidyflash
+
+
+INSTALLATION ON UBUNTU:
 
 	sudo apt-get install ruby rake rubygems libopenssl-ruby git-core ubuntu-restricted-extras
 	gem install tidyflash
 
-and make sure you have the rubygems bin folders in your path
-	edit ~/.bashrc
-add the line:
-	export PATH=/var/lib/gems/1.8/bin:~/.gem/ruby/1.8/bin:$PATH
+Make sure you have the rubygems bin folders in your path
+	echo "PATH=/var/lib/gems/1.8/bin:~/.gem/ruby/1.8/bin:\$PATH" >> ~/.bashrc && . ~/.bashrc
 
+For now, you'll need to hack:
 
-and for now, hack
-
-/var/lib/gems/1.8/gems/sprout-as3-bundle-1.0.36/lib/sprout/fcsh_service.rb 
+	/var/lib/gems/1.8/gems/sprout-as3-bundle-1.0.36/lib/sprout/fcsh_service.rb 
 
 to reference flex4sdk instead of flex3sdk
 
-USAGE:
-
-	tidyflash SomeProject
-	cd SomeProject
-	rake
 
