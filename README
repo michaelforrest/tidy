@@ -1,6 +1,6 @@
 Ruby just makes you want to do things neatly. Even Flash development.
 
-TidyFlash sets up a project that follows a set of conventions simplifying
+TidyFlash creates projects that follow a set of conventions to dramatically simplify:
 	- Typography
 	- Animation
 	- MVC
