@@ -39,7 +39,7 @@ templates/scaffold/src/models/__Model.as
 templates/scaffold/src/views/__model/__ModelDetailView.as
 templates/scaffold/src/views/__model/__ModelListItemView.as
 templates/scaffold/src/views/__model/__ModelListView.as
-templates/swfobject/bin/index.html
-templates/swfobject/bin/js/swfobject.js
-templates/swfobject/swfobject.rb
+templates/web/bin/index.html
+templates/web/bin/js/swfobject.js
+templates/web/web.rb
 test/test_tidy_project.rb
