@@ -28,6 +28,7 @@ package app.views{
 		private function init() : void {
 			var mainClass : Class = Class(getDefinitionByName("app.views.MainView"));
 			if(mainClass) {
+				graphics.clear();
 				var app : Object = new mainClass();
 				addChild(app as DisplayObject);
 			}
