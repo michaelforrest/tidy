@@ -54,9 +54,11 @@ if ARGV.length >= 1
   
   if command == 'generate'
     template_name = ARGV[1]
+
     if template_name.nil?
       fail_with "", "Please provide a generator name"
     else
+      ARGV -= [ARGV[1]]
       Tidy::Generate.new(:template_id=>template_name, :args=>ARGV)
     end
   end
