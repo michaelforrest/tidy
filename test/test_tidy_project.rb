@@ -69,20 +69,21 @@ class TestTidyProject < Test::Unit::TestCase
   		File.delete AIR_CONFIG_FILE_PATH if File.exists? AIR_CONFIG_FILE_PATH
   		template_path = "config/templates/#{TEST_PROJECT_FILE_NAME}.axml.erb"
         File.open(template_path, 'w') do |f|
-        	f.puts("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
-        	f.puts("<application xmlns=\"http://ns.adobe.com/air/application/1.0\">")
-        	f.puts("\t<id><%=@app_name.gsub(\" \", \"\")%></id>")
-        	f.puts("\t<version><%=@version.chomp%></version>")
-        	f.puts("\t<filename><%=@app_name%></filename>")
-        	f.puts("\t<initialWindow>")
-        	f.puts("\t\t<content><%=@content%></content>")
-        	f.puts("\t\t<visible>true</visible>")
-        	f.puts("\t\t<x>50</x>")
-        	f.puts("\t\t<y>50</y>")
-        	f.puts("\t\t<width><%=@width%></width>")
-        	f.puts("\t<height><%=@height + 23%></height>")
-        	f.puts("\t</initialWindow>")
-        	f.puts("</application>")
+          f << %{
+           <?xml version="1.0" encoding="UTF-8"?> 
+             <application xmlns="http://ns.adobe.com/air/application/1.0"> 
+             <id><%=@app_name.gsub(\" \", \"\")%></id> 
+             <version><%=@version.chomp%></version>
+             <filename><%=@app_name%></filename>
+             <initialWindow>
+              <content><%=@content%></content>  
+              <visible>true</visible>   
+              <x>50</x><y>50</y>  
+              <width><%=@width%></width>    
+              <height><%=@height + 23%></height>
+             </initialWindow>   
+           </application> 
+          }
         end
         do_silent_rake()
         assert File.exists?(AIR_CONFIG_FILE_PATH), "AXML config file should be auto-generated from custom template"
