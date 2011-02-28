@@ -56,7 +56,7 @@ module Tidy
     # TODO: make adl launch an air file with a webkit instance and the swf inside it
     #
     def self.swf(args)
-
+      build args, "mxmlc " + parse_options(args)
     end
     # usage: DemoConfig.new(:vars=>{:varName=>'value', :anotherVar=>2.4}, :output=>'variation')
     def self.demo(args)
@@ -83,11 +83,12 @@ module Tidy
 =end
       IO.popen(command){ |process| process.each { |line| puts line } }
     end
+    
     DEFAULT_PATHS = %w[src ~/.tidy/tidy-as3]
     def self.parse_options(args)
       options = DEFAULTS.dup()
       options.each_pair do |k,v|
-		options[k] = args[k] unless args[k].nil?
+		  options[k] = args[k] unless args[k].nil?
 	  end
       paths = DEFAULT_PATHS
       paths = args[:paths].concat(DEFAULT_PATHS) unless args[:paths].nil?

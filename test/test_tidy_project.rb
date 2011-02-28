@@ -21,7 +21,7 @@ class TestTidyProject < Test::Unit::TestCase
 	def test_demo
 		in_project_folder do
 		  	Tidy::Compile.demo(:main=>'src/app/views/MainView.as', 
-				:output=>TEST_PROJECT_FILE_NAME, 
+				    :output=>TEST_PROJECT_FILE_NAME, 
 		        :version=> "0.1",
 		        :vars=>{:isTouch=>true,
 		        	:variation=>0},
@@ -101,13 +101,21 @@ class TestTidyProject < Test::Unit::TestCase
   		Tidy::AirPackager.package(:id=>TEST_PROJECT_FILE_NAME, :do_not_launch=>true)
   		f = "config/air_cert.pfx";
   		assert File.exists?(f), "The certificate file should be created the first time the application is packaged"
-  		content1 = get_file_as_string(f)
+  		content1 = File.read(f)
   		Tidy::AirPackager.package(:id=>TEST_PROJECT_FILE_NAME, :do_not_launch=>true)
-  		content2 = get_file_as_string(f)
+  		content2 = File.read(f)
   		assert content1 == content2, "The certificate file shouldn't be recreated if already present"
   		f = "../releases/#{TEST_PROJECT_FILE_NAME}.air"
   		assert File.exists?(f), "The packaged file should be created in the releases folder"
   	end
+  end
+  
+  def test_swf_creation
+    in_project_folder do
+      Tidy::Compile.swf(:main=>'src/app/views/MainView.as', :output=>TEST_PROJECT_FILE_NAME)
+      Tidy::Generate.new(:template_id=>'web', :args=>[TEST_PROJECT_FILE_NAME])
+      assert File.exists?("bin/#{TEST_PROJECT_FILE_NAME}.swf"), "Rake did not produce swf file"
+    end
   end
   
   def do_silent_rake
@@ -118,14 +126,8 @@ class TestTidyProject < Test::Unit::TestCase
   end
   
   def get_file_line_from_index(file, index)
-  	i = 0;
-  	while (line = file.gets)
-  		#puts "#{i}: #{line}"
-  		if (i==index)
-  			return line
-  		end
-  		i=i+1
-  	end
+    
+  	File.readlines(file.path)[index].to_s
   end
 
 	def file_contains_string?(file, string)
@@ -136,15 +138,7 @@ class TestTidyProject < Test::Unit::TestCase
   		end
   		return false
 	end
-	
-	def get_file_as_string(filename)
-	  data = ''
-	  f = File.open(filename, "r") 
-	  f.each_line do |line|
-	    data += line
-	  end
-	  return data
-	end
+
   #def test_add_libs
   #  in_project_folder do
   #    assert File.exists?('script'), "No script folder"
