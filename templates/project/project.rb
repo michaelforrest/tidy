@@ -12,6 +12,6 @@ class Project < Tidy::TemplateBinding
     FileUtils.mkdir_p "bin"
     FileUtils.mkdir_p "assets"
     #puts "Getting Tidy libraries"
-    #puts `svn co http://lbi-useful-actionscript-3.googlecode.com/svn/trunk/LBiUseful/project/src lib/lbi` 
+    #puts `svn co http://lbi-useful-actionscript-3.googlecode.com/svn/trunk/TidyUseful/project/src lib/lbi` 
   end
 end

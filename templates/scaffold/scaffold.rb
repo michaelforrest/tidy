@@ -2,7 +2,7 @@ def get_template_binding(template)
   Scaffold.new(template)
 end
 
-class Scaffold < LBi::TemplateBinding
+class Scaffold < Tidy::TemplateBinding
   def initialize(template)
      super(template)
      @model = template.args.shift.classify

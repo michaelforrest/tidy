@@ -12,16 +12,20 @@ def fail_with(opts, message)
 end
 
 parser = OptionParser.new do |options|
-  options.banner = <<-BANNER
+  options.banner = <<-END
   
     Tidy is an ActionScript toolkit for people who love Ruby.
     See http://github.com/michaelforrest/tidy
     
-    Usage: #{File.basename($0)} APP_PATH
-           cd APP_PATH
-           rake
+    Creating a project:
+      tidyflash new APP_PATH
+      cd APP_PATH
+      rake
           
-  BANNER
+    Development server:    
+      tidyflash server [--bandwidth 400k]
+          
+  END
   
   options.separator ""
   
@@ -33,7 +37,30 @@ parser = OptionParser.new do |options|
 end
 
 if ARGV.length >= 1
-  TidyProject.new(ARGV[0])
+  
+  command = ARGV[0]
+  if command == 'new'
+    project_name = ARGV[1]
+    unless project_name.nil?
+      TidyProject.new(project_name)
+    else
+      fail_with "","Please provide a project name"
+    end
+  end
+  
+  if command == 'server'
+    
+  end
+  
+  if command == 'generate'
+    template_name = ARGV[1]
+    if template_name.nil?
+      fail_with "", "Please provide a generator name"
+    else
+      Tidy::Generate.new(:template_id=>template_name, :args=>ARGV)
+    end
+  end
+  
 else
   puts parser.banner
 end

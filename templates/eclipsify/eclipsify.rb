@@ -1,11 +1,11 @@
 def get_template_binding(template)
-  Swfobject.new(template)
+  Eclipsify.new(template)
 end
 
-class Swfobject < Tidy::TemplateBinding
+class Eclipsify < Tidy::TemplateBinding
   def initialize(params)
     super(params)
-    @swf_name = params.args[0]
+    @project_name = File.basename Dir.pwd
   end
   def init!
   end
