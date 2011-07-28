@@ -1,4 +1,6 @@
 require 'rubygems'
+require 'active_support'
+require 'active_support/inflector'
 require 'tidy/compile'
 require 'tidy/air_packager'
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
@@ -14,13 +16,13 @@ end
 
 desc 'Compile and run app'
 task :app do
-  Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
+  # replace Compile.air with Compile.swf to compile a swf file (you'll need to open this yourself to test for now)
+  output = Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
               :output=>"<%= @project_name.underscore %>", 
               :version=> "0.1",
-              :width=>1024,
-              :height=>768,
+              :width=>960,
+              :height=>400,
               :default_background_color=>"#FFFFFF")
-
 end
 task :package do
   Tidy::AirPackager.package(:id=>"<%= @project_name.underscore %>")

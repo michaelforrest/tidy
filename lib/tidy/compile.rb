@@ -11,15 +11,11 @@ class Hash
   end
 end
 
-require 'sprout/user'
-require 'sprout/fcsh_socket'
+#require 'sprout/user'
+#require 'sprout/fcsh_socket'
 require "#{File.expand_path(File.dirname(__FILE__))}/axml"
 require "#{File.expand_path(File.dirname(__FILE__))}/version"
 require "#{File.expand_path(File.dirname(__FILE__))}/demo_config"
-
-def method_name
-  
-end
 
 module Tidy
   class Compile
@@ -29,7 +25,9 @@ module Tidy
       :default_frame_rate=> 30,
       #:incremental=>true,
       :use_network=>false,
-      :verbose_stacktraces=>true
+      :verbose_stacktraces=>true,
+      :omit_trace_statements=>false,
+      :static_link_runtime_shared_libraries=>true
       #:warnings=>true
     }
     def self.swf_url(args)
@@ -82,6 +80,7 @@ module Tidy
       puts filtered_result
 =end
       IO.popen(command){ |process| process.each { |line| puts line } }
+      swf_url(args)
     end
     
     DEFAULT_PATHS = %w[src ~/.tidy/tidy-as3]

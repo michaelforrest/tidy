@@ -4,6 +4,10 @@ require 'rubygems'
 require 'optparse'
 require File.dirname(__FILE__) + '/../lib/tidy_project'
 
+def run(command)
+  IO.popen(command){ |process| process.each { |line| puts line } }
+end
+
 def fail_with(opts, message)
   puts "[ERROR] #{message}"
   puts ""
@@ -24,6 +28,9 @@ parser = OptionParser.new do |options|
           
     Development server:    
       tidyflash server [--bandwidth 400k]
+      
+    Air harness for easy tracing
+      tidyflash harness path/to/index
           
   END
   
@@ -36,11 +43,12 @@ parser = OptionParser.new do |options|
   
 end
 
-if ARGV.length >= 1
+command = ARGV.shift
+
+unless command.nil?
   
-  command = ARGV[0]
   if command == 'new'
-    project_name = ARGV[1]
+    project_name = *ARGV
     unless project_name.nil?
       TidyProject.new(project_name)
     else
@@ -52,8 +60,15 @@ if ARGV.length >= 1
     
   end
   
+  if command == 'harness'
+    url = *ARGV
+    harness = File.expand_path(File.dirname(__FILE__) + "/../tools/TidyHarness/bin/tidy_harness.axml")
+    puts harness
+    run "adl #{harness} -nodebug -- #{url}"
+  end
+  
   if command == 'generate'
-    template_name = ARGV[1]
+    command, template_name = *ARGV
 
     if template_name.nil?
       fail_with "", "Please provide a generator name"

@@ -172,18 +172,18 @@ class TestTidyProject < Test::Unit::TestCase
   #    assert File.exists?("bin/#{TEST_PROJECT_FILE_NAME}.swf"), "Rake did not produce swf file"
   #  end
   #end
-  #def test_rake
-  #  
-  #  in_project_folder do
-  #    command = "rake --trace"
-  #    stdin, stdout, stderr = Open3.popen3(command)
-  #    stdout_text = stdout.read
-  #    stderr_text = stdout.read
-  #    puts "#{stdout_text}\n#{stderr_text}"
-  #    assert_no_match /rake aborted/, stderr_text
-  #    assert File.exists?("bin/#{TEST_PROJECT_FILE_NAME}.swf"), "Rake did not produce swf file"
-  #  end
-  #end
+  def test_rake
+    
+    in_project_folder do
+      command = "rake --trace"
+      stdin, stdout, stderr = Open3.popen3(command)
+      stdout_text = stdout.read
+      stderr_text = stdout.read
+      puts "#{stdout_text}\n#{stderr_text}"
+      assert_no_match /rake aborted/, stderr_text
+      assert File.exists?("bin/#{TEST_PROJECT_FILE_NAME}.swf"), "Rake did not produce swf file"
+    end
+  end
   
   private
   def in_project_folder

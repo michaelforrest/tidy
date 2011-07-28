@@ -1,7 +1,7 @@
 
 package app.helpers {
 	import tidy.mvc.helper.TypographyBase;
-	import assets.fonts.Fonts;
+	import library.fonts.Fonts;
 	// import 
 	/**
 	 * <%= credit %>

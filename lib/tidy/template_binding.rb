@@ -1,3 +1,5 @@
+require 'active_support'
+require 'active_support/inflector'
 module Tidy
   class TemplateBinding
     def initialize(template)
