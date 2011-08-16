@@ -16,7 +16,7 @@ end
 
 desc 'Compile and run app'
 task :app do
-  # replace Compile.air with Compile.swf to compile a swf file (you'll need to open this yourself to test for now)
+  # replace Compile.air with Compile.swf to compile a swf file
   output = Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
               :output=>"<%= @project_name.underscore %>", 
               :version=> "0.1",
