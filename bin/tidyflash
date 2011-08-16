@@ -50,7 +50,7 @@ unless command.nil?
   if command == 'new'
     project_name = *ARGV
     unless project_name.nil?
-      TidyProject.new(project_name)
+      TidyProject.new(project_name[0])
     else
       fail_with "","Please provide a project name"
     end

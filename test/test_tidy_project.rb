@@ -1,6 +1,6 @@
 require "test/unit"
 require "open3"
-require 'ftools'
+
 class TestTidyProject < Test::Unit::TestCase
   TEST_PROJECT_NAME = "TestProject"
   TEST_PROJECT_FILE_NAME = "test_project"

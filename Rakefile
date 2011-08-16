@@ -1,7 +1,7 @@
 require 'rubygems'
-require 'rake'
+require 'psych'
 require 'echoe'
-require 'lib/tidy/version'
+require './lib/tidy/version'
 
 Echoe.new('tidyflash', Tidy::Version.number) do |p|
   p.description    = "Tidy Flash - an ActionScript framework for people who love Ruby"
