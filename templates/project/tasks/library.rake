@@ -8,7 +8,7 @@ namespace :library do
   end
   
   def asset_file dir, class_name, options={}
-    Dir.chdir("library/#{dir}") do
+    Dir.chdir(dir) do
       File.open("#{class_name}.as","w") do |file|
         file << <<-END
         package #{options[:package] || dir.gsub("/",".")}{
