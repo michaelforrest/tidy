@@ -28,10 +28,10 @@ package library.fonts {
 	    // SAMPLE OF HOW TO EMBED A FONT WITH TWO WEIGHTS (normal and bold)
 	    
 		public static var BITSTREAM_VERA_SANS : String = "Bitstream Vera Sans";
-		[Embed(source="Vera.ttf",             fontFamily="Bitstream Vera Sans",fontWeight="normal")]
+		[Embed(source="Vera.ttf",             fontFamily="Bitstream Vera Sans",fontWeight="normal", embedAsCFF="false")]
 		private static var bitstream_vera_sans : Class;
 
-		[Embed(source="Vera-Bold.ttf",        fontFamily="Bitstream Vera Sans",fontWeight="bold")]
+		[Embed(source="Vera-Bold.ttf",        fontFamily="Bitstream Vera Sans",fontWeight="bold", embedAsCFF="false")]
 		private static var bitstream_vera_sans_bold : Class;
 		*/
 
