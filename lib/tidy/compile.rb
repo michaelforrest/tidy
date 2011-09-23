@@ -83,12 +83,14 @@ module Tidy
       swf_url(args)
     end
     
+    # TODO: introduce config file for things like this.
     DEFAULT_PATHS = %w[src ~/.tidy/tidy-as3]
     def self.parse_options(args)
       options = DEFAULTS.dup()
       options.each_pair do |k,v|
-		  options[k] = args[k] unless args[k].nil?
-	  end
+  		  options[k] = args.delete(k) unless args[k].nil?
+  	  end
+  	  options.merge! args[:mxmlc] unless args[:mxmlc].nil?
       paths = DEFAULT_PATHS
       paths = args[:paths].concat(DEFAULT_PATHS) unless args[:paths].nil?
       paths = paths.map{|path| "-source-path+=#{File.expand_path path}" }.join(" ")

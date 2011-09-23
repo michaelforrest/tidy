@@ -15,7 +15,7 @@ task :test do |t|
 end
 
 desc 'Compile and run app'
-task :app do
+task :app => 'library:images' do
   # replace Compile.air with Compile.swf to compile a swf file
   output = Tidy::Compile.air(:main=>'src/app/views/MainView.as', 
               :output=>"<%= @project_name.underscore %>", 

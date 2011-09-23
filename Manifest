@@ -20,9 +20,9 @@ lib/tidy/version.rb
 lib/tidy_project.rb
 templates/eclipsify/eclipsify.rb
 templates/project/Gemfile
+templates/project/Rakefile
 templates/project/config/templates/air.axml.erb
 templates/project/project.rb
-templates/project/rakefile.rb
 templates/project/script/fcsh/rakefile.rb
 templates/project/src/app/helpers/Colours.as
 templates/project/src/app/helpers/Debug.as
